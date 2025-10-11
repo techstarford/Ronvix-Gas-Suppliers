@@ -314,11 +314,13 @@ img {
 }
 
 .hero-slide:nth-child(1) {
-    background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+    background-image: url('/assets/images/Lpg\ or\ propane\ gas\ tank\ in\ the\ shape\ of\ cylinder\ on\ black\ floor\ in\ dark\ background_\ 3d\ illustration.\ _\ Premium\ Photo');
+    background-size: cover;
 }
 
 .hero-slide:nth-child(2) {
-    background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+    background-image: url('/assets/images/Botijão\ de\ gás\ 3d\ -\ Alex\ Santos\ ✪.jpg Gas\ Price\ Cut_\ Indian\ Govt\ Slashed\ Domestic\ Cylinder\ Price\ By\ Rs\ 200.jpg');
+    background-size: cover;
 }
 
 .hero-content {
@@ -406,7 +408,7 @@ img {
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 15px;
 }
 
 .feature-card {
@@ -454,7 +456,7 @@ img {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 20px;
 }
 
 .category-card {
@@ -527,8 +529,8 @@ img {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .product-card {

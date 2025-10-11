@@ -739,13 +739,13 @@ img {
 
 .product-category {
     color: var(--gray-color);
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 5px;
 }
 
 .product-title {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 13px;
+    margin-bottom: 5px;
     color: var(--dark-color);
     font-weight: 600;
 }
@@ -754,17 +754,17 @@ img {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .current-price {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--primary-color);
 }
 
 .old-price {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--gray-color);
     text-decoration: line-through;
 }
@@ -773,7 +773,7 @@ img {
     display: flex;
     align-items: center;
     gap: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .product-rating .stars {
