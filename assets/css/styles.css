@@ -227,8 +227,15 @@ img {
 .nav-icons {
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
+ .nav-signup-icon i{ 
+     position: relative;
+     font-size: 22px;
+ }
+
+       
 .cart-icon {
     position: relative;
     margin-right: 20px;
