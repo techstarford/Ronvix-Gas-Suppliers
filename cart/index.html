@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | RonVick Gas Service Limited</title>
+    <meta name="description" content="Review your gas cylinder and accessories order at RonVick Gas Service Limited. Free delivery in Kasana Luwero.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/cart.css">
+    
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone-alt"></i> 0788971271</span>
+                    <span><i class="fas fa-phone-alt"></i> 0776511012</span>
+                    <span><i class="fas fa-phone-alt"></i> 0707461309</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-fire"></i>
+                    <span>RonVick Gas</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="../index.html">Home</a>
+                    <a href="../products/index.html">Products</a>
+                    <a href="../services.html">Services</a>
+                    <a href="../about.html">About</a>
+                    <a href="../about.html">Contact</a>
+                    <div class="mobile-contact">
+                        <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
+                        <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
+                        <a href="tel:0707461309"><i class="fas fa-phone"></i> 0707461309</a>
+                    </div>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Page Content -->
+    <main class="cart-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Shopping Cart</h1>
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <a href="../products/index.html">Products</a>
+                    <span>/</span>
+                    <span>Cart</span>
+                </div>
+            </div>
+
+            <div class="cart-content">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <div class="cart-header">
+                        <div>Product</div>
+                        <div>Price</div>
+                        <div>Quantity</div>
+                        <div>Total</div>
+                    </div>
+
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <div class="item-img">
+                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Heavy Duty Gas Cylinder">
+                            </div>
+                            <div class="item-details">
+                                <h3>Heavy Duty Gas Cylinder - 50kg</h3>
+                                <p>LPG Cylinders</p>
+                            </div>
+                        </div>
+                        <div class="item-price">UGX 299,999</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn"><i class="fas fa-minus"></i></button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="item-total">UGX 299,999</div>
+                        <button class="item-remove"><i class="fas fa-trash"></i></button>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <div class="item-img">
+                                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Premium Gas Pressure Regulator">
+                            </div>
+                            <div class="item-details">
+                                <h3>Premium Gas Pressure Regulator</h3>
+                                <p>Accessories</p>
+                            </div>
+                        </div>
+                        <div class="item-price">UGX 49,999</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn"><i class="fas fa-minus"></i></button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="item-total">UGX 49,999</div>
+                        <button class="item-remove"><i class="fas fa-trash"></i></button>
+                    </div>
+
+                    <!-- Cart Item 3 -->
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <div class="item-img">
+                                <img src="https://images.unsplash.com/photo-1611273426858-450d0e7b9b0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Portable Gas Stove">
+                            </div>
+                            <div class="item-details">
+                                <h3>Portable Gas Stove with Cylinder</h3>
+                                <p>Cooking Equipment</p>
+                            </div>
+                        </div>
+                        <div class="item-price">UGX 89,999</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn"><i class="fas fa-minus"></i></button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="item-total">UGX 89,999</div>
+                        <button class="item-remove"><i class="fas fa-trash"></i></button>
+                    </div>
+
+                    <div class="cart-actions">
+                        <button class="btn btn-outline">Continue Shopping</button>
+                        <button class="btn btn-primary">Update Cart</button>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <h3 class="summary-title">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>UGX 439,997</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span>UGX 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span>UGX 22,000</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span>UGX 461,997</span>
+                    </div>
+
+                    <div class="promo-code">
+                        <h4>Promo Code</h4>
+                        <div class="promo-input">
+                            <input type="text" placeholder="Enter code">
+                            <button>Apply</button>
+                        </div>
+                    </div>
+
+                    <button class="checkout-btn">Proceed to Checkout</button>
+                    <div class="secure-checkout">
+                        <i class="fas fa-lock"></i> Secure Checkout
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty Cart State (Hidden by default) -->
+            <!--
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Your cart is empty</h2>
+                <p>Looks like you haven't added any items to your cart yet.</p>
+                <a href="../products/index.html" class="btn btn-primary">Browse Products</a>
+            </div>
+            -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>RonVick Gas</span>
+                    </div>
+                    <p>Your trusted provider of high-quality gas cylinders and accessories in Kasana Luwero since 2010.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../products/index.html">Products</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../about.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="../products/index.html#lpg">LPG Cylinders</a></li>
+                        <li><a href="../products/index.html#oxygen">Oxygen Cylinders</a></li>
+                        <li><a href="../products/index.html#accessories">Gas Accessories</a></li>
+                        <li><a href="../products/index.html#safety">Safety Equipment</a></li>
+                        <li><a href="../products/index.html#industrial">Industrial Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kasana Luwero near MC Petro Station at the mast</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <a href="tel:0788971271">0788971271</a>
+                                <a href="tel:0776511012">0776511012</a>
+                                <a href="tel:0707461309">0707461309</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2023 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="mobile-bottom-nav">
+        <a href="../index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="../products/index.html" class="mobile-nav-item">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Products</span>
+        </a>
+        <a href="tel:0788971271" class="mobile-nav-item">
+            <i class="fas fa-phone"></i>
+            <span>Call Us</span>
+        </a>
+        <a href="../about.html" class="mobile-nav-item">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+        <a href="#" class="mobile-nav-item active">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count">3</span>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Quantity controls
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+                
+                if (this.querySelector('.fa-minus')) {
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                } else {
+                    input.value = value + 1;
+                }
+                
+                updateCartTotals();
+            });
+        });
+
+        // Quantity input change
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.value < 1) this.value = 1;
+                updateCartTotals();
+            });
+        });
+
+        // Remove item
+        document.querySelectorAll('.item-remove').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.cart-item').remove();
+                updateCartTotals();
+                updateCartCount();
+            });
+        });
+
+        // Update cart totals
+        function updateCartTotals() {
+            let subtotal = 0;
+            
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const price = parseInt(item.querySelector('.item-price').textContent.replace(/[^\d]/g, ''));
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+                const total = price * quantity;
+                
+                item.querySelector('.item-total').textContent = `UGX ${total.toLocaleString()}`;
+                subtotal += total;
+            });
+            
+            const tax = Math.round(subtotal * 0.05);
+            const total = subtotal + tax;
+            
+            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = `UGX ${subtotal.toLocaleString()}`;
+            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = `UGX ${tax.toLocaleString()}`;
+            document.querySelector('.summary-total span:last-child').textContent = `UGX ${total.toLocaleString()}`;
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const itemCount = document.querySelectorAll('.cart-item').length;
+            document.querySelectorAll('.cart-count').forEach(count => {
+                count.textContent = itemCount;
+            });
+            
+            // Show empty cart message if no items
+            if (itemCount === 0) {
+                document.querySelector('.cart-content').style.display = 'none';
+                document.querySelector('.empty-cart').style.display = 'block';
+            }
+        }
+
+        // Initialize
+        updateCartTotals();
+    </script>
+</body>
+</html>
