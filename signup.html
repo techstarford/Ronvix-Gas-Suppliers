@@ -3,434 +3,1278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Gas Cylinders & Accessories | Page 2</title>
+    <title>Sign Up | RonVick Gas Service Limited</title>
+    <meta name="description" content="Create an account or log in to RonVick Gas Service. Access special offers, track orders, and manage your account.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/index.css">
-        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --gray-color: #95a5a6;
+            --dark-gray: #7f8c8d;
+            --light-gray: #bdc3c7;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --white: #ffffff;
+            --black: #000000;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+        }
+
+        .contact-info i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-signup-icon i {
+            position: relative;
+            font-size: 22px;
+        }
+
+        .cart-icon {
+            position: relative;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .cart-icon i {
+            font-size: 22px;
+            color: var(--dark-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        /* Auth Container */
+        .auth-section {
+            padding: 80px 0;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        .auth-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .auth-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .auth-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 18px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+            border-bottom: 3px solid transparent;
+        }
+
+        .auth-tab.active {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .auth-tab:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        .auth-forms {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-form {
+            padding: 30px;
+            transition: transform 0.5s ease;
+        }
+
+        .auth-form.hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            color: var(--gray-color);
+            line-height: 1.5;
+        }
+
+        .checkbox-group a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .auth-submit {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 25px 0;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #eee;
+        }
+
+        .divider span {
+            background-color: var(--white);
+            padding: 0 15px;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .social-auth {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            cursor: pointer;
+        }
+
+        .social-btn.facebook {
+            color: #3b5998;
+        }
+
+        .social-btn.google {
+            color: #db4437;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-footer {
+            text-align: center;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+
+        .auth-footer a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-message {
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger-color);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            display: block;
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle .form-control {
+            padding-right: 45px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray-color);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 60px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-about .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-about .footer-logo i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact ul li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .footer-contact ul li i {
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        .footer-contact ul li a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-contact ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            background-color: #111;
+            padding: 20px 0;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Bottom Nav */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            color: var(--dark-color);
+            font-size: 12px;
+            position: relative;
+        }
+
+        .mobile-nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-nav-item.cart-icon .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 30%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .contact-info span {
+                margin-right: 10px;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links a {
+                margin: 15px 0;
+                font-size: 18px;
+            }
+            
+            .mobile-contact {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 30px;
+            }
+            
+            .mobile-contact a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--primary-color);
+                font-weight: 500;
+            }
+            
+            .mobile-bottom-nav {
+                display: flex;
+            }
+            
+            .auth-container {
+                margin: 0 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .social-auth {
+                flex-direction: column;
+            }
+            
+            .auth-header {
+                padding: 20px;
+            }
+            
+            .auth-header h1 {
+                font-size: 24px;
+            }
+            
+            .auth-form {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-tabs {
+                flex-direction: column;
+            }
+            
+            .auth-tab {
+                padding: 15px;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone-alt"></i> 0788971271</span>
+                    <span><i class="fas fa-phone-alt"></i> 0776511012</span>
+                    <span><i class="fas fa-phone-alt"></i> 0707461309</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header>
+    <header class="header">
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">
+                <a href="./index.html" class="logo">
                     <i class="fas fa-fire"></i>
-                    <span>GasPro</span>
+                    <span>RonVick Gas</span>
                 </a>
-                <div class="nav-links">
+                
+                <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
-                    <a href="products-1.html">Products</a>
-                    <a href="#">Services</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
+                    <a href="./products/index.html">Products</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <div class="mobile-contact">
+                        <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
+                        <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
+                        <a href="tel:0707461309"><i class="fas fa-phone"></i> 0707461309</a>
+                    </div>
                 </div>
-                <div class="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">3</span>
+                
+                <div class="nav-icons">
+                    <a href="./signup.html" class="nav-signup-icon">
+                        <i class="fas fa-user"></i>
+                        <!-- <span>SignUp</span> -->
+                    </a>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Premium Gas Cylinders & Accessories</h1>
-            <p>Discover our wide range of high-quality gas cylinders and related products for home and industrial use</p>
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Welcome to RonVick Gas</h1>
+                <p>Sign up or log in to access special offers and manage your orders</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="signup-tab">Sign Up</div>
+                <div class="auth-tab" id="login-tab">Log In</div>
+            </div>
+            
+            <div class="auth-forms">
+                <!-- Sign Up Form -->
+                <form class="auth-form" id="signup-form">
+                    <div class="form-message" id="signup-message"></div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-phone">Phone Number</label>
+                        <input type="tel" id="signup-phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="password-toggle">
+                            <input type="password" id="signup-password" class="form-control" required>
+                            <button type="button" class="toggle-password" data-target="signup-password">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="password-toggle">
+                            <input type="password" id="confirm-password" class="form-control" required>
+                            <button type="button" class="toggle-password" data-target="confirm-password">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-submit">Create Account</button>
+                    
+                    <div class="divider">
+                        <span>Or sign up with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" id="switch-to-login">Log In</a>
+                    </div>
+                </form>
+                
+                <!-- Log In Form -->
+                <form class="auth-form hidden" id="login-form">
+                    <div class="form-message" id="login-message"></div>
+                    
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-toggle">
+                            <input type="password" id="login-password" class="form-control" required>
+                            <button type="button" class="toggle-password" data-target="login-password">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="checkbox-group" style="margin-bottom: 0;">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" style="font-size: 14px; color: var(--primary-color);">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-submit">Log In</button>
+                    
+                    <div class="divider">
+                        <span>Or log in with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Filters Section -->
-        <section class="filters">
-            <div class="filter-section">
-                <h3>Categories</h3>
-                <div class="filter-options">
-                    <button class="filter-btn">All</button>
-                    <button class="filter-btn">LPG Cylinders</button>
-                    <button class="filter-btn">Oxygen Cylinders</button>
-                    <button class="filter-btn">Accessories</button>
-                    <button class="filter-btn">Safety Equipment</button>
-                </div>
-            </div>
-            <div class="filter-section">
-                <h3>Price Range</h3>
-                <input type="range" class="price-range" min="0" max="1000" value="500">
-                <div class="price-values">
-                    <span>$0</span>
-                    <span>$1000</span>
-                </div>
-            </div>
-            <div class="filter-section">
-                <h3>Brand</h3>
-                <div class="filter-options">
-                    <button class="filter-btn">All</button>
-                    <button class="filter-btn">GasPro</button>
-                    <button class="filter-btn">SafeGas</button>
-                    <button class="filter-btn">FlameMaster</button>
-                    <button class="filter-btn">Other</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products Grid -->
-        <section class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Industrial Gas Cylinder">
-                    <span class="product-badge">New</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Industrial Cylinders</p>
-                    <h3 class="product-title">Heavy Duty Industrial Gas Cylinder - 50kg</h3>
-                    <div class="product-price">
-                        <span class="current-price">$299.99</span>
-                        <span class="old-price">$349.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>(24)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gas Regulator">
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Accessories</p>
-                    <h3 class="product-title">Premium Gas Pressure Regulator</h3>
-                    <div class="product-price">
-                        <span class="current-price">$49.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>(18)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1611273426858-450d0e7b9b0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Portable Gas Stove">
-                    <span class="product-badge">Best Seller</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Cooking Equipment</p>
-                    <h3 class="product-title">Portable Gas Stove with Cylinder</h3>
-                    <div class="product-price">
-                        <span class="current-price">$89.99</span>
-                        <span class="old-price">$109.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(42)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1611273426858-450d0e7b9b0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Oxygen Cylinder">
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Medical Gas</p>
-                    <h3 class="product-title">Medical Oxygen Cylinder - 10L</h3>
-                    <div class="product-price">
-                        <span class="current-price">$199.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>(15)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gas Detector">
-                    <span class="product-badge">Safety</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Safety Equipment</p>
-                    <h3 class="product-title">Digital Gas Leak Detector</h3>
-                    <div class="product-price">
-                        <span class="current-price">$59.99</span>
-                        <span class="old-price">$79.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>(31)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gas Cylinder Cart">
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Accessories</p>
-                    <h3 class="product-title">Heavy Duty Cylinder Transport Cart</h3>
-                    <div class="product-price">
-                        <span class="current-price">$129.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(12)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1611273426858-450d0e7b9b0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Camping Gas Kit">
-                    <span class="product-badge">New</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Outdoor</p>
-                    <h3 class="product-title">Camping Gas Kit with 5kg Cylinder</h3>
-                    <div class="product-price">
-                        <span class="current-price">$149.99</span>
-                        <span class="old-price">$179.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>(27)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gas Hose">
-                </div>
-                <div class="product-info">
-                    <p class="product-category">Accessories</p>
-                    <h3 class="product-title">High Pressure Gas Hose - 2m</h3>
-                    <div class="product-price">
-                        <span class="current-price">$29.99</span>
-                    </div>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>(8)</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="add-to-cart">Add to Cart</button>
-                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pagination -->
-        <div class="pagination">
-            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="page-btn">1</button>
-            <button class="page-btn active">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </main>
-
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>GasPro</h3>
-                    <p>Your trusted source for high-quality gas cylinders and accessories since 2005.</p>
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>RonVick Gas</span>
+                    </div>
+                    <p>Your trusted provider of high-quality gas cylinders and accessories in Kasana Luwero since 2010.</p>
                     <div class="footer-social">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
-                    <ul class="footer-links">
+                    <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="products-1.html">Products</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Products</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">LPG Cylinders</a></li>
-                        <li><a href="#">Oxygen Cylinders</a></li>
-                        <li><a href="#">Gas Accessories</a></li>
-                        <li><a href="#">Safety Equipment</a></li>
-                        <li><a href="#">Industrial Solutions</a></li>
+                    <ul>
+                        <li><a href="products.html#lpg">LPG Cylinders</a></li>
+                        <li><a href="products.html#oxygen">Oxygen Cylinders</a></li>
+                        <li><a href="products.html#accessories">Gas Accessories</a></li>
+                        <li><a href="products.html#safety">Safety Equipment</a></li>
+                        <li><a href="products.html#industrial">Industrial Solutions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col footer-contact">
                     <h3>Contact Us</h3>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">
+                    <ul>
+                        <li>
                             <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <p>123 Gas Street, Energy City</p>
-                        </div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">
+                            <span>Kasana Luwero near MC Petro Station at the mast</span>
+                        </li>
+                        <li>
                             <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <p>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">
+                            <div>
+                                <a href="tel:0788971271">0788971271</a>
+                                <a href="tel:0776511012">0776511012</a>
+                                <a href="tel:0707461309">0707461309</a>
+                            </div>
+                        </li>
+                        <li>
                             <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <p>info@gaspro.com</p>
-                        </div>
-                    </div>
+                            <a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 GasPro. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #e74c3c;"></i> by WebTeam</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2023 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Mobile Bottom Nav -->
+    <div class="mobile-bottom-nav">
+        <a href="./index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="./products/index.html" class="mobile-nav-item">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Products</span>
+        </a>
+        <a href="tel:0788971271" class="mobile-nav-item">
+            <i class="fas fa-phone"></i>
+            <span>Call Us</span>
+        </a>
+        <a href="./signup.html" class="mobile-nav-item active">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+        </a>
+        <a href="./cart/index.html" class="mobile-nav-item cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+
     <script>
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                // Here you would typically filter products
-                console.log('Filter by: ' + this.textContent);
-            });
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
         });
-
-        // Price range display
-        const priceRange = document.querySelector('.price-range');
-        priceRange.addEventListener('input', function() {
-            const priceValues = document.querySelectorAll('.price-values span');
-            priceValues[1].textContent = '$' + this.value;
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
-
-        // Add to cart functionality
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productCard = this.closest('.product-card');
-                const productName = productCard.querySelector('.product-title').textContent;
-                const cartCount = document.querySelector('.cart-count');
+        
+        // Form Toggle Functionality
+        const signupTab = document.getElementById('signup-tab');
+        const loginTab = document.getElementById('login-tab');
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        
+        function showSignupForm() {
+            signupTab.classList.add('active');
+            loginTab.classList.remove('active');
+            signupForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+        
+        function showLoginForm() {
+            signupTab.classList.remove('active');
+            loginTab.classList.add('active');
+            signupForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        }
+        
+        signupTab.addEventListener('click', showSignupForm);
+        loginTab.addEventListener('click', showLoginForm);
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLoginForm();
+        });
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSignupForm();
+        });
+        
+        // Password Visibility Toggle
+        const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+        
+        togglePasswordButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                const icon = button.querySelector('i');
                 
-                // Update cart count
-                let count = parseInt(cartCount.textContent);
-                cartCount.textContent = count + 1;
-                
-                // Show confirmation (in a real app, you'd add to cart storage)
-                alert(`${productName} added to cart!`);
-            });
-        });
-
-        // Wishlist functionality
-        document.querySelectorAll('.wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                if (icon.classList.contains('far')) {
-                    icon.classList.remove('far');
-                    icon.classList.add('fas');
-                    this.style.color = '#e74c3c';
-                    this.style.borderColor = '#e74c3c';
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
                 } else {
-                    icon.classList.remove('fas');
-                    icon.classList.add('far');
-                    this.style.color = '';
-                    this.style.borderColor = '';
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
                 }
             });
         });
-
-        // Pagination functionality
-        document.querySelectorAll('.page-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (!this.querySelector('i')) { // Don't change page for arrow buttons in this demo
-                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    console.log('Go to page: ' + this.textContent);
-                }
+        
+        // Form Submission
+        const signupMessage = document.getElementById('signup-message');
+        const loginMessage = document.getElementById('login-message');
+        
+        // Sign Up Form Submission
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('signup-email').value;
+            const phone = document.getElementById('signup-phone').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const terms = document.getElementById('terms').checked;
+            
+            // Simple validation
+            if (!terms) {
+                showMessage(signupMessage, 'Please agree to the Terms of Service and Privacy Policy', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showMessage(signupMessage, 'Passwords do not match', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage(signupMessage, 'Password must be at least 6 characters long', 'error');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            // For demo purposes, we'll simulate a successful signup
+            showMessage(signupMessage, `Account created successfully! Welcome ${firstName} ${lastName}.`, 'success');
+            
+            // Clear form
+            signupForm.reset();
+            
+            // Auto-switch to login after successful signup (optional)
+            setTimeout(() => {
+                showLoginForm();
+                // Pre-fill email in login form
+                document.getElementById('login-email').value = email;
+                showMessage(loginMessage, 'Please log in with your new account', 'success');
+            }, 2000);
+        });
+        
+        // Login Form Submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                showMessage(loginMessage, 'Please fill in all fields', 'error');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server for authentication
+            // For demo purposes, we'll simulate a successful login
+            showMessage(loginMessage, 'Login successful! Redirecting...', 'success');
+            
+            // Clear form
+            loginForm.reset();
+            
+            // In a real application, you would redirect to the user's dashboard
+            // For now, we'll just show a message
+            setTimeout(() => {
+                showMessage(loginMessage, 'Welcome back to RonVick Gas!', 'success');
+            }, 1000);
+        });
+        
+        // Show message function
+        function showMessage(element, text, type) {
+            element.textContent = text;
+            element.className = `form-message ${type}`;
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                element.classList.remove(type);
+                element.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Social login buttons
+        const socialButtons = document.querySelectorAll('.social-btn');
+        socialButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const platform = button.classList.contains('facebook') ? 'Facebook' : 'Google';
+                const activeForm = signupForm.classList.contains('hidden') ? 'login' : 'signup';
+                const messageElement = activeForm === 'signup' ? signupMessage : loginMessage;
+                
+                showMessage(messageElement, `${platform} ${activeForm} would be implemented in a live application`, 'success');
             });
         });
     </script>
