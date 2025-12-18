@@ -22,13 +22,26 @@ const refillingPrices = {
 // Service fee for pickup service
 const SERVICE_FEE = 5000;
 
+// Brand data with logos and colors
+const brandData = [
+    { id: 'shell', name: 'Shell', icon: 'fas fa-gas-pump', color: '#ff0000' },
+    { id: 'total', name: 'Total', icon: 'fas fa-gas-pump', color: '#0047ab' },
+    { id: 'oryx', name: 'Oryx', icon: 'fas fa-fire', color: '#ff6600' },
+    { id: 'stabex', name: 'Stabex', icon: 'fas fa-bolt', color: '#008000' },
+    { id: 'hass', name: 'Hass', icon: 'fas fa-industry', color: '#800080' },
+    { id: 'hashi', name: 'Hashi', icon: 'fas fa-fire-alt', color: '#ff4500' },
+    { id: 'mogas', name: 'Mogas', icon: 'fas fa-oil-can', color: '#333333' },
+    { id: 'meru', name: 'Meru', icon: 'fas fa-mountain', color: '#0066cc' },
+    { id: 'other', name: 'Other', icon: 'fas fa-question-circle', color: '#666666' }
+];
+
 // DOM Elements
 const refillBookingForm = document.getElementById('refillBookingForm');
 const formSteps = document.querySelectorAll('.form-step');
 const nextButtons = document.querySelectorAll('.btn-next');
 const prevButtons = document.querySelectorAll('.btn-prev');
 const gasTypeOptions = document.querySelectorAll('.gas-type-option');
-const cylinderBrandSelect = document.getElementById('cylinderBrand');
+const brandGridOptions = document.getElementById('brandGridOptions');
 const otherBrandContainer = document.getElementById('otherBrandContainer');
 const otherBrandInput = document.getElementById('otherBrand');
 const cylinderQuantity = document.getElementById('cylinderQuantity');
@@ -37,8 +50,9 @@ const quantityPlus = document.querySelector('.quantity-btn.plus');
 const sizeGroups = document.querySelectorAll('.size-group');
 const sizeOptions = document.querySelectorAll('.size-option');
 const deliveryDate = document.getElementById('deliveryDate');
-const serviceTypeOptions = document.querySelectorAll('input[name="serviceType"]');
-const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
+const serviceTypeOptions = document.querySelectorAll('.service-option');
+const timeOptions = document.querySelectorAll('.time-option');
+const paymentOptions = document.querySelectorAll('.payment-option');
 const calcSize = document.getElementById('calcSize');
 const calcQuantity = document.getElementById('calcQuantity');
 const calcMinus = document.querySelector('.calc-btn.minus');
@@ -53,14 +67,22 @@ const printReceipt = document.getElementById('printReceipt');
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 const cartCount = document.querySelector('.cart-count');
-const modalClose = document.querySelectorAll('.modal-close');
+const modalClose = document.querySelector('.modal-close');
 const faqItems = document.querySelectorAll('.faq-item');
+
+// Summary elements
+const summaryGasType = document.getElementById('summaryGasType');
+const summaryQuantity = document.getElementById('summaryQuantity');
+const summaryRefillFee = document.getElementById('summaryRefillFee');
+const summaryServiceFee = document.getElementById('summaryServiceFee');
+const summaryTotal = document.getElementById('summaryTotal');
 
 // Global Variables
 let currentStep = 1;
 let selectedGasType = 'lpg';
 let selectedCylinderSize = null;
 let selectedSizePrice = 0;
+let selectedBrand = null;
 let totalAmount = 0;
 let bookingData = {};
 
@@ -68,9 +90,11 @@ let bookingData = {};
 document.addEventListener('DOMContentLoaded', function() {
     initializePage();
     setupEventListeners();
+    initializeBrandGrid();
     updateOrderSummary();
     initializeFlatpickr();
     updateCalculator();
+    initializeFAQ();
 });
 
 function initializePage() {
@@ -81,9 +105,6 @@ function initializePage() {
     document.querySelector('.gas-type-option[data-type="lpg"]').classList.add('active');
     document.querySelector('.size-group[data-gas="lpg"]').classList.add('active');
     
-     // Initialize brand grid
-    initializeBrandGrid();
-
     // Initialize date picker
     if (deliveryDate) {
         flatpickr(deliveryDate, {
@@ -107,16 +128,19 @@ function initializePage() {
     }
     
     // Set default time to morning
-    document.querySelector('input[name="deliveryTime"][value="morning"]').checked = true;
+    document.querySelector('.time-option').classList.add('active');
     
     // Set default service type
-    document.querySelector('input[name="serviceType"][value="pickup"]').checked = true;
+    document.querySelector('.service-option').classList.add('active');
     
     // Set default payment method
-    document.querySelector('input[name="paymentMethod"][value="cash"]').checked = true;
+    document.querySelector('.payment-option').classList.add('active');
     
-    // Initialize FAQ
-    initializeFAQ();
+    // Select default size (13kg LPG)
+    const defaultSizeOption = document.querySelector('.size-option[data-size="13kg"]');
+    if (defaultSizeOption) {
+        defaultSizeOption.click();
+    }
 }
 
 function setupEventListeners() {
@@ -151,26 +175,6 @@ function setupEventListeners() {
         });
     });
     
-    // Brand selection
-   /*  cylinderBrandSelect.addEventListener('change', function() {
-        if (this.value === 'other') {
-            otherBrandContainer.style.display = 'block';
-            otherBrandInput.required = true;
-        } else {
-            otherBrandContainer.style.display = 'none';
-            otherBrandInput.required = false;
-        }
-    }); */
-
-    const otherBrandInput = document.getElementById('otherBrand');
-    if (otherBrandInput) {
-        otherBrandInput.addEventListener('input', function() {
-            if (this.value.trim()) {
-                clearError(this);
-            }
-        });
-    }
-    
     // Quantity controls
     quantityMinus.addEventListener('click', function() {
         let value = parseInt(cylinderQuantity.value);
@@ -189,16 +193,21 @@ function setupEventListeners() {
     });
     
     // Size selection
-        // Size selection - UPDATE THIS
     sizeOptions.forEach(option => {
         option.addEventListener('click', function() {
+            // Remove selected class from all size options
+            document.querySelectorAll('.size-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
             const size = this.dataset.size;
             const price = parseInt(this.dataset.price);
             
-            // Get the radio button inside this option
+            // Update the hidden radio button
             const radioButton = this.querySelector('input[type="radio"]');
-            
-            // Check the radio button
             if (radioButton) {
                 radioButton.checked = true;
             }
@@ -207,9 +216,51 @@ function setupEventListeners() {
         });
     });
     
-    // Service type change
+    // Service type selection
     serviceTypeOptions.forEach(option => {
-        option.addEventListener('change', updateOrderSummary);
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.service-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            const radioButton = this.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+            
+            updateOrderSummary();
+        });
+    });
+    
+    // Time selection
+    timeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.time-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            const radioButton = this.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+        });
+    });
+    
+    // Payment method selection
+    paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            const radioButton = this.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+        });
     });
     
     // Calculator controls
@@ -240,17 +291,26 @@ function setupEventListeners() {
         }
     });
     
-    // Modal close buttons
-    modalClose.forEach(button => {
-        button.addEventListener('click', function() {
-            this.closest('.modal').classList.remove('active');
+    // Modal close
+    if (modalClose) {
+        modalClose.addEventListener('click', function() {
+            successModal.classList.remove('active');
         });
+    }
+    
+    // Close modal when clicking outside
+    successModal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
     });
     
     // Print receipt
-    printReceipt.addEventListener('click', function() {
-        window.print();
-    });
+    if (printReceipt) {
+        printReceipt.addEventListener('click', function() {
+            window.print();
+        });
+    }
     
     // Footer calculator links
     document.querySelectorAll('[data-calc-size]').forEach(link => {
@@ -266,6 +326,24 @@ function setupEventListeners() {
             }
         });
     });
+    
+    // Other brand input validation
+    if (otherBrandInput) {
+        otherBrandInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                clearError(this);
+            }
+        });
+    }
+    
+    // Emergency button
+    const emergencyBtn = document.querySelector('.emergency-btn');
+    if (emergencyBtn) {
+        emergencyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'tel:0788971271';
+        });
+    }
 }
 
 function showStep(stepNumber) {
@@ -284,7 +362,6 @@ function showStep(stepNumber) {
 
 function validateStep(stepNumber) {
     let isValid = true;
-    const currentStepElement = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
     
     switch(stepNumber) {
         case 1:
@@ -318,26 +395,24 @@ function validateStep(stepNumber) {
             break;
             
         case 2:
-            const cylinderBrand = document.getElementById('cylinderBrand');
-            const selectedSize = document.querySelector('input[name="cylinderSize"]:checked');
-            
-            if (!cylinderBrand.value) {
-                showError(cylinderBrand, 'Please select a cylinder brand');
+            // Check if brand is selected
+            if (!selectedBrand) {
+                alert('Please select a cylinder brand');
                 isValid = false;
-            } else {
-                clearError(cylinderBrand);
+            } else if (selectedBrand === 'other') {
+                if (!otherBrandInput.value.trim()) {
+                    showError(otherBrandInput, 'Please specify the brand name');
+                    isValid = false;
+                } else {
+                    clearError(otherBrandInput);
+                }
             }
             
-            if (!selectedSize) {
+            // Check if size is selected
+            const selectedSize = document.querySelector('input[name="cylinderSize"]:checked');
+            if (!selectedSize && !selectedCylinderSize) {
                 alert('Please select a cylinder size');
                 isValid = false;
-            }
-            
-            if (cylinderBrand.value === 'other' && !otherBrandInput.value.trim()) {
-                showError(otherBrandInput, 'Please specify the brand name');
-                isValid = false;
-            } else if (cylinderBrand.value === 'other') {
-                clearError(otherBrandInput);
             }
             break;
             
@@ -368,7 +443,7 @@ function validateStep(stepNumber) {
 }
 
 function showError(input, message) {
-    const formGroup = input.closest('.form-group') || input.closest('.selection-group');
+    const formGroup = input.closest('.form-group') || input.closest('.selection-group') || input.closest('.other-brand-container');
     input.style.borderColor = 'var(--danger-color)';
     
     let errorElement = formGroup.querySelector('.error-message');
@@ -385,12 +460,12 @@ function showError(input, message) {
 }
 
 function clearError(input) {
-    const formGroup = input.closest('.form-group') || input.closest('.selection-group');
+    const formGroup = input.closest('.form-group') || input.closest('.selection-group') || input.closest('.other-brand-container');
     input.style.borderColor = '';
     
     const errorElement = formGroup.querySelector('.error-message');
     if (errorElement) {
-        errorElement.remove();
+        errorElement.textContent = '';
     }
 }
 
@@ -402,6 +477,12 @@ function selectGasType(gasType) {
         option.classList.remove('active');
         if (option.dataset.type === gasType) {
             option.classList.add('active');
+            
+            // Update hidden radio button
+            const radioButton = option.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
         }
     });
     
@@ -413,42 +494,84 @@ function selectGasType(gasType) {
         }
     });
     
-    // Reset selected size - ADD THIS
+    // Reset selected size
+    document.querySelectorAll('.size-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    
     document.querySelectorAll('input[name="cylinderSize"]').forEach(radio => {
         radio.checked = false;
     });
+    
     selectedCylinderSize = null;
     selectedSizePrice = 0;
-    
-    // Also unselect any active size option styling
-    sizeOptions.forEach(option => {
-        option.classList.remove('selected');
-    });
     
     updateOrderSummary();
 }
 
-/*function selectCylinderSize(size, price) {
-    selectedCylinderSize = size;
-    selectedSizePrice = price;
-    updateOrderSummary();
-}*/
+function initializeBrandGrid() {
+    if (!brandGridOptions) return;
+    
+    brandGridOptions.innerHTML = '';
+    
+    brandData.forEach(brand => {
+        const brandOption = document.createElement('div');
+        brandOption.className = 'brand-option';
+        brandOption.dataset.value = brand.id;
+        
+        brandOption.innerHTML = `
+            <input type="radio" name="cylinderBrand" value="${brand.id}" style="display: none;">
+            <div class="brand-option-content">
+                <div class="brand-icon" style="color: ${brand.color}">
+                    <i class="${brand.icon}"></i>
+                </div>
+                <span class="brand-name">${brand.name}</span>
+            </div>
+        `;
+        
+        brandOption.addEventListener('click', function() {
+            selectBrand(brand.id);
+        });
+        
+        brandGridOptions.appendChild(brandOption);
+    });
+    
+    // Select first brand by default
+    selectBrand('shell');
+}
+
+function selectBrand(brandId) {
+    // Remove selected class from all brand options
+    document.querySelectorAll('.brand-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked option
+    const selectedOption = document.querySelector(`.brand-option[data-value="${brandId}"]`);
+    if (selectedOption) {
+        selectedOption.classList.add('selected');
+        const radioInput = selectedOption.querySelector('input[type="radio"]');
+        if (radioInput) {
+            radioInput.checked = true;
+        }
+    }
+    
+    selectedBrand = brandId;
+    
+    // Show/hide other brand input
+    if (brandId === 'other') {
+        otherBrandContainer.style.display = 'block';
+        otherBrandInput.required = true;
+    } else {
+        otherBrandContainer.style.display = 'none';
+        otherBrandInput.required = false;
+        clearError(otherBrandInput);
+    }
+}
 
 function selectCylinderSize(size, price) {
     selectedCylinderSize = size;
     selectedSizePrice = price;
-    
-    // Remove selected class from all size options
-    sizeOptions.forEach(option => {
-        option.classList.remove('selected');
-    });
-    
-    // Add selected class to the clicked option
-    const clickedOption = document.querySelector(`.size-option[data-size="${size}"]`);
-    if (clickedOption) {
-        clickedOption.classList.add('selected');
-    }
-    
     updateOrderSummary();
 }
 
@@ -466,11 +589,11 @@ function updateOrderSummary() {
     totalAmount = refillFee + serviceFee;
     
     // Update summary elements
-    document.getElementById('summaryGasType').textContent = `${gasType} ${sizeLabel}`;
-    document.getElementById('summaryQuantity').textContent = `${quantity} cylinder${quantity > 1 ? 's' : ''}`;
-    document.getElementById('summaryRefillFee').textContent = `UGX ${refillFee.toLocaleString()}`;
-    document.getElementById('summaryServiceFee').textContent = `UGX ${serviceFee.toLocaleString()}`;
-    document.getElementById('summaryTotal').textContent = `UGX ${totalAmount.toLocaleString()}`;
+    if (summaryGasType) summaryGasType.textContent = `${gasType} ${sizeLabel}`;
+    if (summaryQuantity) summaryQuantity.textContent = `${quantity} cylinder${quantity > 1 ? 's' : ''}`;
+    if (summaryRefillFee) summaryRefillFee.textContent = `UGX ${refillFee.toLocaleString()}`;
+    if (summaryServiceFee) summaryServiceFee.textContent = `UGX ${serviceFee.toLocaleString()}`;
+    if (summaryTotal) summaryTotal.textContent = `UGX ${totalAmount.toLocaleString()}`;
 }
 
 function getGasTypeName(gasType) {
@@ -496,7 +619,7 @@ function updateCalculator() {
     }
     
     const total = price * quantity;
-    calcTotal.textContent = `UGX ${total.toLocaleString()}`;
+    if (calcTotal) calcTotal.textContent = `UGX ${total.toLocaleString()}`;
 }
 
 function submitBooking() {
@@ -511,7 +634,7 @@ function submitBooking() {
         },
         cylinder: {
             gasType: selectedGasType,
-            brand: cylinderBrandSelect.value === 'other' ? otherBrandInput.value : cylinderBrandSelect.value,
+            brand: selectedBrand === 'other' ? otherBrandInput.value : selectedBrand,
             size: selectedCylinderSize,
             quantity: parseInt(cylinderQuantity.value)
         },
@@ -538,16 +661,13 @@ function submitBooking() {
     // Show success modal
     successModal.classList.add('active');
     
-    // Reset form after delay
+    // Reset form after 5 seconds
     setTimeout(() => {
-        // resetForm();
-    }, 3000);
+        resetForm();
+    }, 5000);
     
     // In a real application, you would send this data to your server
     console.log('Booking submitted:', bookingData);
-    
-    // For demo purposes, we'll log to console and show alert
-    alert(`Booking submitted! Order ID: ${bookingData.orderId}\nWe'll contact you shortly.`);
 }
 
 function generateOrderId() {
@@ -558,9 +678,9 @@ function generateOrderId() {
 }
 
 function updateSuccessModal() {
-    orderId.textContent = bookingData.orderId;
-    orderService.textContent = `${getGasTypeName(bookingData.cylinder.gasType)} ${bookingData.cylinder.size.toUpperCase()} Refill`;
-    orderTotal.textContent = `UGX ${bookingData.pricing.total.toLocaleString()}`;
+    if (orderId) orderId.textContent = bookingData.orderId;
+    if (orderService) orderService.textContent = `${getGasTypeName(bookingData.cylinder.gasType)} ${bookingData.cylinder.size.toUpperCase()} Refill`;
+    if (orderTotal) orderTotal.textContent = `UGX ${bookingData.pricing.total.toLocaleString()}`;
     
     // Format delivery info
     const timeLabels = {
@@ -572,7 +692,7 @@ function updateSuccessModal() {
     const date = new Date(bookingData.delivery.date);
     const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     
-    orderDelivery.textContent = `${formattedDate} - ${timeLabels[bookingData.delivery.time]}`;
+    if (orderDelivery) orderDelivery.textContent = `${formattedDate} - ${timeLabels[bookingData.delivery.time]}`;
 }
 
 function resetForm() {
@@ -587,6 +707,7 @@ function resetForm() {
     selectedGasType = 'lpg';
     selectedCylinderSize = null;
     selectedSizePrice = 0;
+    selectedBrand = null;
     totalAmount = 0;
     
     // Reset UI
@@ -596,32 +717,46 @@ function resetForm() {
     sizeGroups.forEach(group => group.classList.remove('active'));
     document.querySelector('.size-group[data-gas="lpg"]').classList.add('active');
     
+    document.querySelectorAll('.size-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    
     document.querySelectorAll('input[name="cylinderSize"]').forEach(radio => radio.checked = false);
     
-    otherBrandContainer.style.display = 'none';
-    otherBrandInput.required = false;
+    // Reset brand selection
+    selectBrand('shell');
     
     cylinderQuantity.value = 1;
-
-     // Reset brand selection
-    const firstBrand = document.querySelector('.brand-option[data-value="shell"]');
-    if (firstBrand) {
-        firstBrand.click();
-    }
     
     // Reset date to tomorrow
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const formattedDate = tomorrow.toISOString().split('T')[0];
-    deliveryDate.value = formattedDate;
+    if (deliveryDate) {
+        deliveryDate.value = formattedDate;
+    }
     
     // Reset defaults
-    document.querySelector('input[name="deliveryTime"][value="morning"]').checked = true;
-    document.querySelector('input[name="serviceType"][value="pickup"]').checked = true;
-    document.querySelector('input[name="paymentMethod"][value="cash"]').checked = true;
+    document.querySelectorAll('.time-option').forEach(opt => opt.classList.remove('active'));
+    document.querySelector('.time-option').classList.add('active');
+    
+    document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('active'));
+    document.querySelector('.service-option').classList.add('active');
+    
+    document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+    document.querySelector('.payment-option').classList.add('active');
+    
+    // Select default size (13kg LPG)
+    const defaultSizeOption = document.querySelector('.size-option[data-size="13kg"]');
+    if (defaultSizeOption) {
+        defaultSizeOption.click();
+    }
     
     // Update summary
     updateOrderSummary();
+    
+    // Hide success modal
+    successModal.classList.remove('active');
 }
 
 function toggleMobileMenu() {
@@ -630,15 +765,17 @@ function toggleMobileMenu() {
 }
 
 function initializeFlatpickr() {
-    flatpickr('.datepicker', {
-        minDate: 'today',
-        dateFormat: 'Y-m-d',
-        disable: [
-            function(date) {
-                return date.getDay() === 0; // Disable Sundays
-            }
-        ]
-    });
+    if (typeof flatpickr !== 'undefined' && deliveryDate) {
+        flatpickr(deliveryDate, {
+            minDate: 'today',
+            dateFormat: 'Y-m-d',
+            disable: [
+                function(date) {
+                    return date.getDay() === 0; // Disable Sundays
+                }
+            ]
+        });
+    }
 }
 
 function initializeFAQ() {
@@ -658,182 +795,76 @@ function initializeFAQ() {
     });
 }
 
-// Initialize calculator with default values
-function initializeCalculator() {
-    calcSize.value = '13kg';
-    calcQuantity.value = 1;
-    updateCalculator();
-}
-
-// Add to cart functionality (for emergency refills)
+// Add to cart functionality
 function addToCart(item) {
     let cartItems = parseInt(cartCount.textContent) || 0;
     cartItems++;
     cartCount.textContent = cartItems;
     
-    // Visual feedback
-    const originalText = item.innerHTML;
-    item.innerHTML = '<i class="fas fa-check"></i> Added';
-    item.style.backgroundColor = '#2ecc71';
+    // Update mobile cart count
+    const mobileCartCount = document.querySelector('.mobile-nav-item.cart-icon .cart-count');
+    if (mobileCartCount) {
+        mobileCartCount.textContent = cartItems;
+    }
     
-    setTimeout(() => {
-        item.innerHTML = originalText;
-        item.style.backgroundColor = '';
-    }, 2000);
+    // Visual feedback
+    if (item) {
+        const originalText = item.innerHTML;
+        item.innerHTML = '<i class="fas fa-check"></i> Added';
+        item.style.backgroundColor = '#2ecc71';
+        
+        setTimeout(() => {
+            item.innerHTML = originalText;
+            item.style.backgroundColor = '';
+        }, 2000);
+    }
+}
+
+// Initialize calculator with default values
+function initializeCalculator() {
+    if (calcSize && calcQuantity) {
+        calcSize.value = '13kg';
+        calcQuantity.value = 1;
+        updateCalculator();
+    }
 }
 
 // Initialize calculator on page load
 window.addEventListener('load', initializeCalculator);
 
-// Brand data with logos (using Font Awesome icons)
-const brandData = [
-    { id: 'shell', name: 'Shell', icon: 'fas fa-gas-pump', color: '#ff0000' },
-    { id: 'total', name: 'Total', icon: 'fas fa-gas-pump', color: '#0047ab' },
-    { id: 'oryx', name: 'Oryx', icon: 'fas fa-fire', color: '#ff6600' },
-    { id: 'stabex', name: 'Stabex', icon: 'fas fa-bolt', color: '#008000' },
-    { id: 'hass', name: 'Hass', icon: 'fas fa-industry', color: '#800080' },
-    { id: 'hashi', name: 'Hashi', icon: 'fas fa-fire-alt', color: '#ff4500' },
-    { id: 'mogas', name: 'Mogas', icon: 'fas fa-oil-can', color: '#333333' },
-    { id: 'meru', name: 'Meru', icon: 'fas fa-mountain', color: '#0066cc' },
-    { id: 'other', name: 'Other', icon: 'fas fa-question-circle', color: '#666666' }
-];
+// Handle window resize for responsive adjustments
+window.addEventListener('resize', function() {
+    // You can add responsive adjustments here if needed
+});
 
-// Initialize brand grid
-function initializeBrandGrid() {
-    const brandGrid = document.querySelector('.brand-grid-options');
-    if (!brandGrid) return;
-    
-    brandGrid.innerHTML = '';
-    
-    brandData.forEach(brand => {
-        const brandOption = document.createElement('div');
-        brandOption.className = 'brand-option';
-        brandOption.dataset.value = brand.id;
-        
-        brandOption.innerHTML = `
-            <input type="radio" name="cylinderBrand" value="${brand.id}" id="brand_${brand.id}" style="display: none;">
-            <div class="brand-option-content">
-                <div class="brand-icon" style="color: ${brand.color}">
-                    <i class="${brand.icon}"></i>
-                </div>
-                <span class="brand-name">${brand.name}</span>
-            </div>
-        `;
-        
-        brandOption.addEventListener('click', function() {
-            selectBrand(brand.id);
-        });
-        
-        brandGrid.appendChild(brandOption);
-    });
-    
-    // Select first brand by default
-    setTimeout(() => {
-        selectBrand('shell');
-    }, 100);
-}
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInsideNav && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+});
 
-function selectBrand(brandId) {
-    // Update UI
-    document.querySelectorAll('.brand-option').forEach(option => {
-        option.classList.remove('selected');
-    });
-    
-    const selectedOption = document.querySelector(`.brand-option[data-value="${brandId}"]`);
-    if (selectedOption) {
-        selectedOption.classList.add('selected');
-        const radioInput = selectedOption.querySelector('input[type="radio"]');
-        if (radioInput) {
-            radioInput.checked = true;
+// Handle escape key to close modal
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && successModal.classList.contains('active')) {
+        successModal.classList.remove('active');
+    }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
         }
-    }
-    
-    // Show/hide other brand input
-    const otherBrandContainer = document.getElementById('otherBrandContainer');
-    const otherBrandInput = document.getElementById('otherBrand');
-    
-    if (brandId === 'other') {
-        otherBrandContainer.style.display = 'block';
-        otherBrandInput.required = true;
-    } else {
-        otherBrandContainer.style.display = 'none';
-        otherBrandInput.required = false;
-    }
-}
-
-// Update getSelectedBrand function
-function getSelectedBrand() {
-    const selectedOption = document.querySelector('.brand-option.selected');
-    if (selectedOption) {
-        const brandId = selectedOption.dataset.value;
-        if (brandId === 'other') {
-            const otherBrandInput = document.getElementById('otherBrand');
-            return otherBrandInput.value.trim() || 'other';
-        }
-        return brandId;
-    }
-    return '';
-}
-
-// Update validation for Step 2 to use the new brand selection
-function validateStep(stepNumber) {
-    let isValid = true;
-    
-    switch(stepNumber) {
-        case 2:
-            // Remove old validation for dropdown and use new method
-            const selectedBrand = getSelectedBrand();
-            
-            if (!selectedBrand) {
-                // Show error on brand grid
-                const brandGrid = document.querySelector('.brand-grid-options');
-                brandGrid.style.border = '2px solid var(--danger-color)';
-                brandGrid.style.borderRadius = '8px';
-                setTimeout(() => {
-                    brandGrid.style.border = '';
-                }, 2000);
-                
-                isValid = false;
-            } else if (selectedBrand === 'other') {
-                const otherBrandInput = document.getElementById('otherBrand');
-                if (!otherBrandInput.value.trim()) {
-                    showError(otherBrandInput, 'Please specify the brand name');
-                    isValid = false;
-                } else {
-                    clearError(otherBrandInput);
-                }
-            }
-            
-            const selectedSize = document.querySelector('input[name="cylinderSize"]:checked');
-            if (!selectedSize && !selectedCylinderSize) {
-                alert('Please select a cylinder size');
-                isValid = false;
-            }
-            break;
-    }
-    
-    return isValid;
-}
-
-// Update submitBooking function to get brand value
-function submitBooking() {
-    // Collect form data
-    bookingData = {
-        customer: {
-            name: document.getElementById('customerName').value,
-            phone: document.getElementById('customerPhone').value,
-            email: document.getElementById('customerEmail').value,
-            address: document.getElementById('customerAddress').value,
-            instructions: document.getElementById('deliveryInstructions').value
-        },
-        cylinder: {
-            gasType: selectedGasType,
-            brand: getSelectedBrand(), // Updated to use new function
-            size: selectedCylinderSize,
-            quantity: parseInt(cylinderQuantity.value)
-        },
-        // ... rest of your code
-    };
-    
-    // ... rest of your submitBooking function
-}
+    });
+});

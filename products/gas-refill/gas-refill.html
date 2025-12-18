@@ -6,7 +6,7 @@
     <title>Gas Refilling Service | RonVick Gas Service Limited</title>
     <meta name="description" content="Professional gas refilling service in Kasana Luwero. We refill all cylinder types (6kg, 13kg, 25kg, 50kg) - Shell, Total, Oryx, Stabex, Hass, Hashi, Mogas, Meru.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/css/gas-refilling.css">
+    <link rel="stylesheet" href="../../assets/css/gas-refill.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -43,9 +43,8 @@
                 <div class="nav-links" id="navLinks">
                     <a href="../index.html">Home</a>
                     <a href="../products/index.html">Products</a>
-                    <!-- <a href="../gas-cylinders.html">Cylinders</a> -->
                     <a href="../services.html">Services</a>
-                    <a href="../gas-refilling.html" class="active">Gas Refilling</a>
+                    <a href="gas-refilling.html" class="active">Gas Refilling</a>
                     <a href="../about.html">About</a>
                     <a href="../contact.html">Contact</a>
                     <div class="mobile-contact">
@@ -77,9 +76,9 @@
             <div class="page-header">
                 <h1>Gas Refilling Service</h1>
                 <div class="breadcrumb">
-                    <a href="../../index.html">Home</a>
+                    <a href="../index.html">Home</a>
                     <span>/</span>
-                    <a href="../../services.html">Services</a>
+                    <a href="../services.html">Services</a>
                     <span>/</span>
                     <span>Gas Refilling</span>
                 </div>
@@ -163,18 +162,22 @@
                                     <div class="form-group">
                                         <label for="customerName">Full Name *</label>
                                         <input type="text" id="customerName" required placeholder="Enter your full name">
+                                        <div class="error-message"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="customerPhone">Phone Number *</label>
                                         <input type="tel" id="customerPhone" required placeholder="078 897 1271">
+                                        <div class="error-message"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="customerEmail">Email Address</label>
                                         <input type="email" id="customerEmail" placeholder="your@email.com">
+                                        <div class="error-message"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="customerAddress">Delivery Address *</label>
                                         <input type="text" id="customerAddress" required placeholder="Enter your complete address">
+                                        <div class="error-message"></div>
                                     </div>
                                     <div class="form-group full-width">
                                         <label for="deliveryInstructions">Delivery Instructions</label>
@@ -198,58 +201,38 @@
                                     <div class="selection-group">
                                         <label class="selection-label">Gas Type *</label>
                                         <div class="gas-type-options">
-                                            <label class="gas-type-option active" data-type="lpg">
-                                                <input type="radio" name="gasType" value="lpg" checked>
+                                            <div class="gas-type-option active" data-type="lpg">
+                                                <input type="radio" name="gasType" value="lpg" checked hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-fire"></i>
                                                     <span>LPG (Cooking Gas)</span>
                                                 </div>
-                                            </label>
-                                            <label class="gas-type-option" data-type="oxygen">
-                                                <input type="radio" name="gasType" value="oxygen">
+                                            </div>
+                                            <div class="gas-type-option" data-type="oxygen">
+                                                <input type="radio" name="gasType" value="oxygen" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-lungs"></i>
                                                     <span>Oxygen</span>
                                                 </div>
-                                            </label>
-                                            <label class="gas-type-option" data-type="industrial">
-                                                <input type="radio" name="gasType" value="industrial">
+                                            </div>
+                                            <div class="gas-type-option" data-type="industrial">
+                                                <input type="radio" name="gasType" value="industrial" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-industry"></i>
                                                     <span>Industrial Gas</span>
                                                 </div>
-                                            </label>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!-- <div class="selection-group">
-                                        <label class="selection-label">Cylinder Brand *</label>
-                                        <div class="brand-options">
-                                            <select id="cylinderBrand" required>
-                                                <option value="">Select brand</option>
-                                                <option value="shell">Shell</option>
-                                                <option value="total">Total</option>
-                                                <option value="oryx">Oryx</option>
-                                                <option value="stabex">Stabex</option>
-                                                <option value="hass">Hass</option>
-                                                <option value="hashi">Hashi</option>
-                                                <option value="mogas">Mogas</option>
-                                                <option value="meru">Meru</option>
-                                                <option value="other">Other Brand</option>
-                                            </select>
-                                            <div id="otherBrandContainer" style="display: none; margin-top: 10px;">
-                                                <input type="text" id="otherBrand" placeholder="Specify brand name">
-                                            </div>
-                                        </div>
-                                    </div> -->
-
                                     <div class="selection-group">
                                         <label class="selection-label">Cylinder Brand *</label>
-                                        <div class="brand-grid-options">
-                                            <!-- Brand options will be populated by JavaScript -->
+                                        <div class="brand-grid-options" id="brandGridOptions">
+                                            <!-- Brands will be dynamically added -->
                                         </div>
-                                        <div id="otherBrandContainer" style="display: none; margin-top: 10px;">
-                                            <input type="text" id="otherBrand" placeholder="Specify brand name" class="other-brand-input">
+                                        <div id="otherBrandContainer" class="other-brand-container">
+                                            <input type="text" id="otherBrand" placeholder="Specify brand name">
+                                            <div class="error-message"></div>
                                         </div>
                                     </div>
 
@@ -259,7 +242,7 @@
                                             <!-- LPG Sizes -->
                                             <div class="size-group active" data-gas="lpg">
                                                 <div class="size-option" data-size="3kg" data-price="15000">
-                                                    <input type="radio" name="cylinderSize" value="3kg">
+                                                    <input type="radio" name="cylinderSize" value="3kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">3kg</div>
                                                         <div class="size-price">UGX 15,000</div>
@@ -267,7 +250,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="6kg" data-price="25000">
-                                                    <input type="radio" name="cylinderSize" value="6kg">
+                                                    <input type="radio" name="cylinderSize" value="6kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">6kg</div>
                                                         <div class="size-price">UGX 25,000</div>
@@ -275,7 +258,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="13kg" data-price="45000">
-                                                    <input type="radio" name="cylinderSize" value="13kg">
+                                                    <input type="radio" name="cylinderSize" value="13kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">13kg</div>
                                                         <div class="size-price">UGX 45,000</div>
@@ -283,7 +266,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="25kg" data-price="85000">
-                                                    <input type="radio" name="cylinderSize" value="25kg">
+                                                    <input type="radio" name="cylinderSize" value="25kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">25kg</div>
                                                         <div class="size-price">UGX 85,000</div>
@@ -291,7 +274,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="50kg" data-price="165000">
-                                                    <input type="radio" name="cylinderSize" value="50kg">
+                                                    <input type="radio" name="cylinderSize" value="50kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">50kg</div>
                                                         <div class="size-price">UGX 165,000</div>
@@ -303,7 +286,7 @@
                                             <!-- Oxygen Sizes -->
                                             <div class="size-group" data-gas="oxygen">
                                                 <div class="size-option" data-size="5L" data-price="75000">
-                                                    <input type="radio" name="cylinderSize" value="5L">
+                                                    <input type="radio" name="cylinderSize" value="5L" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">5L</div>
                                                         <div class="size-price">UGX 75,000</div>
@@ -311,7 +294,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="10L" data-price="140000">
-                                                    <input type="radio" name="cylinderSize" value="10L">
+                                                    <input type="radio" name="cylinderSize" value="10L" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">10L</div>
                                                         <div class="size-price">UGX 140,000</div>
@@ -319,7 +302,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="20L" data-price="270000">
-                                                    <input type="radio" name="cylinderSize" value="20L">
+                                                    <input type="radio" name="cylinderSize" value="20L" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">20L</div>
                                                         <div class="size-price">UGX 270,000</div>
@@ -331,7 +314,7 @@
                                             <!-- Industrial Gas Sizes -->
                                             <div class="size-group" data-gas="industrial">
                                                 <div class="size-option" data-size="10kg" data-price="55000">
-                                                    <input type="radio" name="cylinderSize" value="10kg">
+                                                    <input type="radio" name="cylinderSize" value="10kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">10kg</div>
                                                         <div class="size-price">UGX 55,000</div>
@@ -339,7 +322,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="20kg" data-price="105000">
-                                                    <input type="radio" name="cylinderSize" value="20kg">
+                                                    <input type="radio" name="cylinderSize" value="20kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">20kg</div>
                                                         <div class="size-price">UGX 105,000</div>
@@ -347,7 +330,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="size-option" data-size="40kg" data-price="205000">
-                                                    <input type="radio" name="cylinderSize" value="40kg">
+                                                    <input type="radio" name="cylinderSize" value="40kg" hidden>
                                                     <div class="option-content">
                                                         <div class="size-label">40kg</div>
                                                         <div class="size-price">UGX 205,000</div>
@@ -387,40 +370,41 @@
                                     <div class="selection-group">
                                         <label class="selection-label">Preferred Date *</label>
                                         <input type="text" id="deliveryDate" class="datepicker" placeholder="Select date" required>
+                                        <div class="error-message"></div>
                                     </div>
                                     
                                     <div class="selection-group">
                                         <label class="selection-label">Preferred Time *</label>
                                         <div class="time-options">
-                                            <label class="time-option">
-                                                <input type="radio" name="deliveryTime" value="morning">
+                                            <div class="time-option">
+                                                <input type="radio" name="deliveryTime" value="morning" checked hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-sun"></i>
                                                     <span>Morning (8AM - 12PM)</span>
                                                 </div>
-                                            </label>
-                                            <label class="time-option">
-                                                <input type="radio" name="deliveryTime" value="afternoon">
+                                            </div>
+                                            <div class="time-option">
+                                                <input type="radio" name="deliveryTime" value="afternoon" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-sun"></i>
                                                     <span>Afternoon (12PM - 4PM)</span>
                                                 </div>
-                                            </label>
-                                            <label class="time-option">
-                                                <input type="radio" name="deliveryTime" value="evening">
+                                            </div>
+                                            <div class="time-option">
+                                                <input type="radio" name="deliveryTime" value="evening" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-moon"></i>
                                                     <span>Evening (4PM - 7PM)</span>
                                                 </div>
-                                            </label>
+                                            </div>
                                         </div>
                                     </div>
                                     
                                     <div class="selection-group">
                                         <label class="selection-label">Service Type *</label>
                                         <div class="service-options">
-                                            <label class="service-option">
-                                                <input type="radio" name="serviceType" value="pickup" checked>
+                                            <div class="service-option active">
+                                                <input type="radio" name="serviceType" value="pickup" checked hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-truck-pickup"></i>
                                                     <div>
@@ -429,9 +413,9 @@
                                                     </div>
                                                     <span class="service-price">+UGX 5,000</span>
                                                 </div>
-                                            </label>
-                                            <label class="service-option">
-                                                <input type="radio" name="serviceType" value="dropoff">
+                                            </div>
+                                            <div class="service-option">
+                                                <input type="radio" name="serviceType" value="dropoff" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-truck"></i>
                                                     <div>
@@ -440,34 +424,34 @@
                                                     </div>
                                                     <span class="service-price">Free</span>
                                                 </div>
-                                            </label>
+                                            </div>
                                         </div>
                                     </div>
                                     
                                     <div class="selection-group">
                                         <label class="selection-label">Payment Method *</label>
                                         <div class="payment-options">
-                                            <label class="payment-option">
-                                                <input type="radio" name="paymentMethod" value="cash" checked>
+                                            <div class="payment-option active">
+                                                <input type="radio" name="paymentMethod" value="cash" checked hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-money-bill-wave"></i>
                                                     <span>Cash on Delivery</span>
                                                 </div>
-                                            </label>
-                                            <label class="payment-option">
-                                                <input type="radio" name="paymentMethod" value="mobile">
+                                            </div>
+                                            <div class="payment-option">
+                                                <input type="radio" name="paymentMethod" value="mobile" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-mobile-alt"></i>
                                                     <span>Mobile Money</span>
                                                 </div>
-                                            </label>
-                                            <label class="payment-option">
-                                                <input type="radio" name="paymentMethod" value="card">
+                                            </div>
+                                            <div class="payment-option">
+                                                <input type="radio" name="paymentMethod" value="card" hidden>
                                                 <div class="option-content">
                                                     <i class="fas fa-credit-card"></i>
                                                     <span>Card Payment</span>
                                                 </div>
-                                            </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -792,9 +776,9 @@
                     <ul>
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="../products/index.html">Products</a></li>
-                        <li><a href="../gas-cylinders.html">Cylinders</a></li>
                         <li><a href="../services.html">Services</a></li>
-                        <li><a href="../gas-refilling.html" class="active">Gas Refilling</a></li>
+                        <li><a href="gas-refilling.html" class="active">Gas Refilling</a></li>
+                        <li><a href="../about.html">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -804,7 +788,7 @@
                         <li><a href="#" data-calc-size="13kg">13kg Refill</a></li>
                         <li><a href="#" data-calc-size="25kg">25kg Refill</a></li>
                         <li><a href="#" data-calc-size="50kg">50kg Refill</a></li>
-                        <li><a href="#">Emergency Refill</a></li>
+                        <li><a href="#emergency">Emergency Refill</a></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-contact">
@@ -855,7 +839,7 @@
             <i class="fas fa-shopping-bag"></i>
             <span>Products</span>
         </a>
-        <a href="../gas-refilling.html" class="mobile-nav-item active">
+        <a href="gas-refilling.html" class="mobile-nav-item active">
             <i class="fas fa-gas-pump"></i>
             <span>Refill</span>
         </a>
