@@ -81,6 +81,9 @@ function initializePage() {
     document.querySelector('.gas-type-option[data-type="lpg"]').classList.add('active');
     document.querySelector('.size-group[data-gas="lpg"]').classList.add('active');
     
+     // Initialize brand grid
+    initializeBrandGrid();
+
     // Initialize date picker
     if (deliveryDate) {
         flatpickr(deliveryDate, {
@@ -149,7 +152,7 @@ function setupEventListeners() {
     });
     
     // Brand selection
-    cylinderBrandSelect.addEventListener('change', function() {
+   /*  cylinderBrandSelect.addEventListener('change', function() {
         if (this.value === 'other') {
             otherBrandContainer.style.display = 'block';
             otherBrandInput.required = true;
@@ -157,7 +160,16 @@ function setupEventListeners() {
             otherBrandContainer.style.display = 'none';
             otherBrandInput.required = false;
         }
-    });
+    }); */
+
+    const otherBrandInput = document.getElementById('otherBrand');
+    if (otherBrandInput) {
+        otherBrandInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                clearError(this);
+            }
+        });
+    }
     
     // Quantity controls
     quantityMinus.addEventListener('click', function() {
@@ -590,6 +602,12 @@ function resetForm() {
     otherBrandInput.required = false;
     
     cylinderQuantity.value = 1;
+
+     // Reset brand selection
+    const firstBrand = document.querySelector('.brand-option[data-value="shell"]');
+    if (firstBrand) {
+        firstBrand.click();
+    }
     
     // Reset date to tomorrow
     const tomorrow = new Date();
@@ -666,3 +684,156 @@ function addToCart(item) {
 
 // Initialize calculator on page load
 window.addEventListener('load', initializeCalculator);
+
+// Brand data with logos (using Font Awesome icons)
+const brandData = [
+    { id: 'shell', name: 'Shell', icon: 'fas fa-gas-pump', color: '#ff0000' },
+    { id: 'total', name: 'Total', icon: 'fas fa-gas-pump', color: '#0047ab' },
+    { id: 'oryx', name: 'Oryx', icon: 'fas fa-fire', color: '#ff6600' },
+    { id: 'stabex', name: 'Stabex', icon: 'fas fa-bolt', color: '#008000' },
+    { id: 'hass', name: 'Hass', icon: 'fas fa-industry', color: '#800080' },
+    { id: 'hashi', name: 'Hashi', icon: 'fas fa-fire-alt', color: '#ff4500' },
+    { id: 'mogas', name: 'Mogas', icon: 'fas fa-oil-can', color: '#333333' },
+    { id: 'meru', name: 'Meru', icon: 'fas fa-mountain', color: '#0066cc' },
+    { id: 'other', name: 'Other', icon: 'fas fa-question-circle', color: '#666666' }
+];
+
+// Initialize brand grid
+function initializeBrandGrid() {
+    const brandGrid = document.querySelector('.brand-grid-options');
+    if (!brandGrid) return;
+    
+    brandGrid.innerHTML = '';
+    
+    brandData.forEach(brand => {
+        const brandOption = document.createElement('div');
+        brandOption.className = 'brand-option';
+        brandOption.dataset.value = brand.id;
+        
+        brandOption.innerHTML = `
+            <input type="radio" name="cylinderBrand" value="${brand.id}" id="brand_${brand.id}" style="display: none;">
+            <div class="brand-option-content">
+                <div class="brand-icon" style="color: ${brand.color}">
+                    <i class="${brand.icon}"></i>
+                </div>
+                <span class="brand-name">${brand.name}</span>
+            </div>
+        `;
+        
+        brandOption.addEventListener('click', function() {
+            selectBrand(brand.id);
+        });
+        
+        brandGrid.appendChild(brandOption);
+    });
+    
+    // Select first brand by default
+    setTimeout(() => {
+        selectBrand('shell');
+    }, 100);
+}
+
+function selectBrand(brandId) {
+    // Update UI
+    document.querySelectorAll('.brand-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    const selectedOption = document.querySelector(`.brand-option[data-value="${brandId}"]`);
+    if (selectedOption) {
+        selectedOption.classList.add('selected');
+        const radioInput = selectedOption.querySelector('input[type="radio"]');
+        if (radioInput) {
+            radioInput.checked = true;
+        }
+    }
+    
+    // Show/hide other brand input
+    const otherBrandContainer = document.getElementById('otherBrandContainer');
+    const otherBrandInput = document.getElementById('otherBrand');
+    
+    if (brandId === 'other') {
+        otherBrandContainer.style.display = 'block';
+        otherBrandInput.required = true;
+    } else {
+        otherBrandContainer.style.display = 'none';
+        otherBrandInput.required = false;
+    }
+}
+
+// Update getSelectedBrand function
+function getSelectedBrand() {
+    const selectedOption = document.querySelector('.brand-option.selected');
+    if (selectedOption) {
+        const brandId = selectedOption.dataset.value;
+        if (brandId === 'other') {
+            const otherBrandInput = document.getElementById('otherBrand');
+            return otherBrandInput.value.trim() || 'other';
+        }
+        return brandId;
+    }
+    return '';
+}
+
+// Update validation for Step 2 to use the new brand selection
+function validateStep(stepNumber) {
+    let isValid = true;
+    
+    switch(stepNumber) {
+        case 2:
+            // Remove old validation for dropdown and use new method
+            const selectedBrand = getSelectedBrand();
+            
+            if (!selectedBrand) {
+                // Show error on brand grid
+                const brandGrid = document.querySelector('.brand-grid-options');
+                brandGrid.style.border = '2px solid var(--danger-color)';
+                brandGrid.style.borderRadius = '8px';
+                setTimeout(() => {
+                    brandGrid.style.border = '';
+                }, 2000);
+                
+                isValid = false;
+            } else if (selectedBrand === 'other') {
+                const otherBrandInput = document.getElementById('otherBrand');
+                if (!otherBrandInput.value.trim()) {
+                    showError(otherBrandInput, 'Please specify the brand name');
+                    isValid = false;
+                } else {
+                    clearError(otherBrandInput);
+                }
+            }
+            
+            const selectedSize = document.querySelector('input[name="cylinderSize"]:checked');
+            if (!selectedSize && !selectedCylinderSize) {
+                alert('Please select a cylinder size');
+                isValid = false;
+            }
+            break;
+    }
+    
+    return isValid;
+}
+
+// Update submitBooking function to get brand value
+function submitBooking() {
+    // Collect form data
+    bookingData = {
+        customer: {
+            name: document.getElementById('customerName').value,
+            phone: document.getElementById('customerPhone').value,
+            email: document.getElementById('customerEmail').value,
+            address: document.getElementById('customerAddress').value,
+            instructions: document.getElementById('deliveryInstructions').value
+        },
+        cylinder: {
+            gasType: selectedGasType,
+            brand: getSelectedBrand(), // Updated to use new function
+            size: selectedCylinderSize,
+            quantity: parseInt(cylinderQuantity.value)
+        },
+        // ... rest of your code
+    };
+    
+    // ... rest of your submitBooking function
+}

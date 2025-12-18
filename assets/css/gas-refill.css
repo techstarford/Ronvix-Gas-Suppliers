@@ -559,6 +559,18 @@ img {
     margin-bottom: 25px;
 }
 
+.selection-group {
+    margin-bottom: 20px;
+}
+
+.selection-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-color, #333);
+    font-size: 15px;
+}
+
 .selection-label {
     display: block;
     margin-bottom: 12px;
@@ -621,7 +633,7 @@ img {
 }
 
 /* Brand Options */
-.brand-options select {
+/* .brand-options select {
     width: 100%;
     padding: 12px 15px;
     border: 2px solid #e0e0e0;
@@ -635,8 +647,153 @@ img {
 .brand-options select:focus {
     border-color: var(--primary-color);
     outline: none;
+} */
+
+
+/* Brand Grid Styles */
+.brand-grid-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 5px;
 }
 
+.brand-option {
+    border: 2px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 90px;
+}
+
+.brand-option:hover {
+    border-color: var(--primary-color, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.brand-option.selected {
+    border-color: var(--primary-color, #3498db);
+    background-color: rgba(52, 152, 219, 0.08);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.brand-option-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.brand-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color, #333);
+    text-align: center;
+}
+
+.brand-option.selected .brand-name {
+    color: var(--primary-color, #3498db);
+    font-weight: 600;
+}
+
+/* Other brand input */
+.other-brand-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.other-brand-input:focus {
+    outline: none;
+    border-color: var(--primary-color, #3498db);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .brand-grid-options {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-grid-options {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .brand-option {
+        padding: 10px 6px;
+        min-height: 80px;
+    }
+    
+    .brand-icon {
+        font-size: 20px;
+    }
+    
+    .brand-name {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-grid-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .brand-option {
+        padding: 8px 4px;
+        min-height: 70px;
+    }
+    
+    .brand-icon {
+        font-size: 18px;
+    }
+    
+    .brand-name {
+        font-size: 11px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+    .brand-grid-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .brand-option {
+        padding: 6px 3px;
+        min-height: 65px;
+    }
+    
+    .brand-icon {
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+    
+    .brand-name {
+        font-size: 10px;
+    }
+}
 
 /* Size Options */
 .size-options {
