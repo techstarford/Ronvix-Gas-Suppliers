@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Cylinders - Complete Range | RonVick Gas Service Limited</title>
+    <meta name="description" content="Shop high-quality gas cylinders in all sizes (6kg, 13kg, 25kg, 50kg) from top brands - Shell, Oryx, Total, Stabex, Hass, Hashi, Mogas, Meru. Free delivery in Kasana Luwero.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/gas-cylinders.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone-alt"></i> 0788971271</span>
+                    <span><i class="fas fa-phone-alt"></i> 0776511012</span>
+                    <span><i class="fas fa-phone-alt"></i> 0707461309</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-fire"></i>
+                    <span>RonVick Gas</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../products/index.html" class="active">Products</a>
+                    <!-- <a href="../gas-cylinders.html" class="active">Gas Cylinders</a> -->
+                    <a href="../../services.html">Services</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../contact.html">Contact</a>
+                    <div class="mobile-contact">
+                        <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
+                        <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
+                        <a href="tel:0707461309"><i class="fas fa-phone"></i> 0707461309</a>
+                    </div>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Gas Cylinders Page Content -->
+    <main class="gas-cylinders-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Gas Cylinders</h1>
+                <div class="breadcrumb">
+                    <a href="../../index.html">Home</a>
+                    <span>/</span>
+                    <a href="../../products/index.html">Products</a>
+                    <span>/</span>
+                    <span>Gas Cylinders</span>
+                </div>
+            </div>
+
+            <!-- Category Banner -->
+            <div class="category-banner">
+                <div class="banner-content">
+                    <h2>Premium Quality Gas Cylinders</h2>
+                    <p>Wide range of sizes from 6kg to 50kg. All major brands available. Certified & safety tested.</p>
+                    <a href="#brands" class="btn btn-primary">View All Brands</a>
+                </div>
+                <div class="banner-image">
+                    <img src="../../assets/images/gas cylinders.jpg" alt="Gas Cylinders Collection">
+                </div>
+            </div>
+
+            <div class="products-content">
+                <!-- Filter Toggle Button (Mobile Only) -->
+                <button class="filter-toggle" id="filterToggle">
+                    <i class="fas fa-filter"></i> Filters <span class="active-filter-count">0</span>
+                </button>
+
+                <!-- Sidebar Filters -->
+                <aside class="products-sidebar" id="productsSidebar">
+                    <div class="sidebar-header">
+                        <h3>Filter Cylinders</h3>
+                        <button class="sidebar-close" id="sidebarClose">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <!-- Search Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Search</h4>
+                        <div class="filter-content">
+                            <div class="search-box">
+                                <input type="text" id="searchInput" placeholder="Search cylinders...">
+                                <button id="searchBtn"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Size Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Cylinder Size</h4>
+                        <div class="filter-content">
+                            <div class="size-filters">
+                                <div class="size-filter-grid">
+                                    <label class="size-option" data-size="all">
+                                        <input type="radio" name="size" value="all" checked>
+                                        <span>All Sizes</span>
+                                    </label>
+                                    <label class="size-option" data-size="6kg">
+                                        <input type="radio" name="size" value="6kg">
+                                        <span>6kg</span>
+                                        <small>Portable</small>
+                                    </label>
+                                    <label class="size-option" data-size="13kg">
+                                        <input type="radio" name="size" value="13kg">
+                                        <span>13kg</span>
+                                        <small>Standard</small>
+                                    </label>
+                                    <label class="size-option" data-size="25kg">
+                                        <input type="radio" name="size" value="25kg">
+                                        <span>25kg</span>
+                                        <small>Family</small>
+                                    </label>
+                                    <label class="size-option" data-size="50kg">
+                                        <input type="radio" name="size" value="50kg">
+                                        <span>50kg</span>
+                                        <small>Commercial</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Brand</h4>
+                        <div class="filter-content">
+                            <div class="brand-filters">
+                                <div class="brand-search">
+                                    <input type="text" id="brandSearch" placeholder="Search brands...">
+                                </div>
+                                <div class="brand-list">
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="all" checked>
+                                        <span class="brand-name">All Brands</span>
+                                        <span class="brand-count">(32)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="shell">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Shell_logo.svg/1200px-Shell_logo.svg.png" alt="Shell" class="brand-logo">
+                                        <span class="brand-name">Shell</span>
+                                        <span class="brand-count">(8)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="total">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TotalEnergies_logo.svg/1200px-TotalEnergies_logo.svg.png" alt="Total" class="brand-logo">
+                                        <span class="brand-name">Total</span>
+                                        <span class="brand-count">(6)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="oryx">
+                                        <div class="brand-logo-text">ORYX</div>
+                                        <span class="brand-name">Oryx</span>
+                                        <span class="brand-count">(5)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="stabex">
+                                        <div class="brand-logo-text">STABEX</div>
+                                        <span class="brand-name">Stabex</span>
+                                        <span class="brand-count">(4)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="hass">
+                                        <div class="brand-logo-text">HASS</div>
+                                        <span class="brand-name">Hass</span>
+                                        <span class="brand-count">(3)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="hashi">
+                                        <div class="brand-logo-text">HASHI</div>
+                                        <span class="brand-name">Hashi</span>
+                                        <span class="brand-count">(2)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="mogas">
+                                        <div class="brand-logo-text">MOGAS</div>
+                                        <span class="brand-name">Mogas</span>
+                                        <span class="brand-count">(2)</span>
+                                    </label>
+                                    <label class="brand-option">
+                                        <input type="checkbox" class="brand-checkbox" value="meru">
+                                        <div class="brand-logo-text">MERU</div>
+                                        <span class="brand-name">Meru</span>
+                                        <span class="brand-count">(2)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Price Range (UGX)</h4>
+                        <div class="filter-content">
+                            <div class="price-range-filter">
+                                <div id="priceSlider" class="price-slider"></div>
+                                <div class="price-inputs">
+                                    <div class="price-input">
+                                        <label>Min</label>
+                                        <input type="number" id="minPrice" value="0" min="0" max="500000">
+                                    </div>
+                                    <div class="price-input">
+                                        <label>Max</label>
+                                        <input type="number" id="maxPrice" value="500000" min="0" max="500000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Type Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Cylinder Type</h4>
+                        <div class="filter-content">
+                            <div class="type-filters">
+                                <label class="type-option">
+                                    <input type="checkbox" class="type-checkbox" value="all" checked>
+                                    <span class="type-name">All Types</span>
+                                </label>
+                                <label class="type-option">
+                                    <input type="checkbox" class="type-checkbox" value="lpg">
+                                    <span class="type-name">LPG (Cooking Gas)</span>
+                                </label>
+                                <label class="type-option">
+                                    <input type="checkbox" class="type-checkbox" value="oxygen">
+                                    <span class="type-name">Oxygen</span>
+                                </label>
+                                <label class="type-option">
+                                    <input type="checkbox" class="type-checkbox" value="industrial">
+                                    <span class="type-name">Industrial Gas</span>
+                                </label>
+                                <label class="type-option">
+                                    <input type="checkbox" class="type-checkbox" value="refillable">
+                                    <span class="type-name">Refillable</span>
+                                </label>
+                                <label class="type-option">
+                                    <input type="checkbox" class="type-checkbox" value="disposable">
+                                    <span class="type-name">Disposable</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certification Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Certification</h4>
+                        <div class="filter-content">
+                            <div class="certification-filters">
+                                <label class="certification-option">
+                                    <input type="checkbox" class="certification-checkbox" value="all" checked>
+                                    <span class="certification-name">All</span>
+                                </label>
+                                <label class="certification-option">
+                                    <input type="checkbox" class="certification-checkbox" value="uncertified">
+                                    <span class="certification-name">UN Certified</span>
+                                </label>
+                                <label class="certification-option">
+                                    <input type="checkbox" class="certification-checkbox" value="iso">
+                                    <span class="certification-name">ISO Certified</span>
+                                </label>
+                                <label class="certification-option">
+                                    <input type="checkbox" class="certification-checkbox" value="safety">
+                                    <span class="certification-name">Safety Tested</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Availability Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Availability</h4>
+                        <div class="filter-content">
+                            <div class="availability-filters">
+                                <label class="availability-option">
+                                    <input type="checkbox" class="availability-checkbox" value="all" checked>
+                                    <span class="availability-name">All</span>
+                                </label>
+                                <label class="availability-option">
+                                    <input type="checkbox" class="availability-checkbox" value="in-stock">
+                                    <span class="availability-name">In Stock</span>
+                                    <span class="availability-count">(24)</span>
+                                </label>
+                                <label class="availability-option">
+                                    <input type="checkbox" class="availability-checkbox" value="pre-order">
+                                    <span class="availability-name">Pre-Order</span>
+                                    <span class="availability-count">(8)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Actions -->
+                    <div class="filter-actions">
+                        <button class="btn btn-primary apply-filters" id="applyFilters">Apply Filters</button>
+                        <button class="btn btn-outline reset-filters" id="resetFilters">Reset All</button>
+                    </div>
+                </aside>
+
+                <!-- Main Products Grid -->
+                <div class="products-main">
+                    <!-- Products Sorting -->
+                    <div class="products-sorting">
+                        <div class="sorting-left">
+                            <p>Showing <span id="showingCount">1-24</span> of <span id="totalCount">32</span> cylinders</p>
+                            <div class="active-filters" id="activeFilters">
+                                <!-- Active filters will appear here -->
+                            </div>
+                        </div>
+                        <div class="sorting-right">
+                            <div class="sort-by">
+                                <label>Sort by:</label>
+                                <select id="sortSelect">
+                                    <option value="default">Default</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="name">Name: A to Z</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="new">Newest First</option>
+                                </select>
+                            </div>
+                            <div class="view-mode">
+                                <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                                <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded dynamically -->
+                    </div>
+
+                    <!-- Loading Spinner -->
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner"></div>
+                        <p>Loading cylinders...</p>
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No cylinders found</h3>
+                        <p>Try adjusting your filters or search term</p>
+                        <button class="btn btn-outline" id="clearFiltersBtn">Clear All Filters</button>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be generated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brands Section -->
+            <section class="brands-section" id="brands">
+                <h2>Our Trusted Brands</h2>
+                <p>We supply gas cylinders from all major manufacturers in Uganda</p>
+                <div class="brands-grid">
+                    <div class="brand-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Shell_logo.svg/1200px-Shell_logo.svg.png" alt="Shell">
+                        <h3>Shell</h3>
+                        <p>Global energy company with premium quality cylinders</p>
+                    </div>
+                    <div class="brand-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TotalEnergies_logo.svg/1200px-TotalEnergies_logo.svg.png" alt="Total">
+                        <h3>Total</h3>
+                        <p>French multinational integrated oil and gas company</p>
+                    </div>
+                    <div class="brand-card">
+                        <div class="brand-logo-text">ORYX</div>
+                        <h3>Oryx</h3>
+                        <p>Leading gas cylinder manufacturer in East Africa</p>
+                    </div>
+                    <div class="brand-card">
+                        <div class="brand-logo-text">STABEX</div>
+                        <h3>Stabex</h3>
+                        <p>Trusted brand for safe and durable cylinders</p>
+                    </div>
+                    <div class="brand-card">
+                        <div class="brand-logo-text">HASS</div>
+                        <h3>Hass</h3>
+                        <p>Reliable and affordable gas cylinders</p>
+                    </div>
+                    <div class="brand-card">
+                        <div class="brand-logo-text">HASHI</div>
+                        <h3>Hashi</h3>
+                        <p>Quality cylinders for domestic and commercial use</p>
+                    </div>
+                    <div class="brand-card">
+                        <div class="brand-logo-text">MOGAS</div>
+                        <h3>Mogas</h3>
+                        <p>Modern gas solutions for every home</p>
+                    </div>
+                    <div class="brand-card">
+                        <div class="brand-logo-text">MERU</div>
+                        <h3>Meru</h3>
+                        <p>Eco-friendly and efficient gas cylinders</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Size Guide -->
+            <section class="size-guide">
+                <h2>Cylinder Size Guide</h2>
+                <div class="size-guide-grid">
+                    <div class="size-card">
+                        <div class="size-icon">6kg</div>
+                        <h3>6kg Cylinder</h3>
+                        <p><strong>Best for:</strong> Single persons, students, small families</p>
+                        <p><strong>Duration:</strong> 2-3 weeks</p>
+                        <p><strong>Price Range:</strong> UGX 45,000 - 65,000</p>
+                    </div>
+                    <div class="size-card">
+                        <div class="size-icon">13kg</div>
+                        <h3>13kg Cylinder</h3>
+                        <p><strong>Best for:</strong> Small families (3-4 persons)</p>
+                        <p><strong>Duration:</strong> 4-6 weeks</p>
+                        <p><strong>Price Range:</strong> UGX 85,000 - 120,000</p>
+                    </div>
+                    <div class="size-card">
+                        <div class="size-icon">25kg</div>
+                        <h3>25kg Cylinder</h3>
+                        <p><strong>Best for:</strong> Medium families, small restaurants</p>
+                        <p><strong>Duration:</strong> 8-10 weeks</p>
+                        <p><strong>Price Range:</strong> UGX 150,000 - 200,000</p>
+                    </div>
+                    <div class="size-card">
+                        <div class="size-icon">50kg</div>
+                        <h3>50kg Cylinder</h3>
+                        <p><strong>Best for:</strong> Large families, hotels, institutions</p>
+                        <p><strong>Duration:</strong> 12-16 weeks</p>
+                        <p><strong>Price Range:</strong> UGX 280,000 - 350,000</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Safety Information -->
+            <section class="safety-info">
+                <h2>Safety First - Always!</h2>
+                <div class="safety-grid">
+                    <div class="safety-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Certified Quality</h3>
+                        <p>All our cylinders undergo rigorous safety testing and are certified by relevant authorities.</p>
+                    </div>
+                    <div class="safety-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Professional Installation</h3>
+                        <p>We provide free professional installation and safety checks with every purchase.</p>
+                    </div>
+                    <div class="safety-card">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Refill Service</h3>
+                        <p>Convenient refill service with free pickup and delivery in Kasana Luwero.</p>
+                    </div>
+                    <div class="safety-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Emergency support available 24/7 for any gas-related issues or concerns.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>RonVick Gas</span>
+                    </div>
+                    <p>Your trusted provider of high-quality gas cylinders and accessories in Kasana Luwero since 2010.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../products/index.html">Products</a></li>
+                        <li><a href="gas-cylinders.html" class="active">Gas Cylinders</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Cylinder Sizes</h3>
+                    <ul>
+                        <li><a href="#" data-filter-size="6kg">6kg Cylinders</a></li>
+                        <li><a href="#" data-filter-size="13kg">13kg Cylinders</a></li>
+                        <li><a href="#" data-filter-size="25kg">25kg Cylinders</a></li>
+                        <li><a href="#" data-filter-size="50kg">50kg Cylinders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kasana Luwero near MC Petro Station at the mast</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <a href="tel:0788971271">0788971271</a>
+                                <a href="tel:0776511012">0776511012</a>
+                                <a href="tel:0707461309">0707461309</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2023 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="mobile-bottom-nav">
+        <a href="../../index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="../../products/index.html" class="mobile-nav-item active">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Products</span>
+        </a>
+        <a href="../../index.html" class="mobile-nav-item">
+            <i class="fas fa-phone"></i>
+            <span>Call Us</span>
+        </a>
+        <a href="../../signup.html" class="mobile-nav-item">
+            <i class="fas fa-user"></i>
+            <span>SignUp</span>
+        </a>
+        <a href="../../cart/index.html" class="mobile-nav-item cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal quick-view-modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="quick-view-content">
+                <!-- Content loaded via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add to Cart Modal -->
+    <div class="modal cart-modal" id="cartModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="cart-modal-content">
+                <i class="fas fa-check-circle"></i>
+                <h3>Added to Cart!</h3>
+                <p id="cartItemName"></p>
+                <div class="cart-modal-actions">
+                    <button class="btn btn-outline" id="continueShopping">Continue Shopping</button>
+                    <a href="../../cart/index.html" class="btn btn-primary">View Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+    <script src="../../assets/js/gas-cylinders.js"></script>
+</body>
+</html>

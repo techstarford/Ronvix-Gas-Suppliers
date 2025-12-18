@@ -689,8 +689,12 @@ img {
     color: var(--warning-color);
 }
 
+.product-rating .stars i{
+    font-size: 11px;
+}
+
 .rating-count {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--gray-color);
 }
 
@@ -740,6 +744,18 @@ img {
     display: flex;
     justify-content: center;
     gap: 15px;
+}
+
+.cta-buttons a{
+   font-weight: 600;
+}
+
+.cta-btn{
+    background-color: var(--warning-color);
+}
+
+.cta-btn:hover {
+    background-color: var(--primary-dark);
 }
 
 /* Testimonials */
