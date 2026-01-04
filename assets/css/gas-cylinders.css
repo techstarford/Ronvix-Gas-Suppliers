@@ -364,10 +364,10 @@ img {
 
 /* Products Sidebar */
 .products-sidebar {
-    width: 320px;
+    width: 270px;
     background-color: var(--white);
     border-radius: 12px;
-    padding: 25px;
+    padding: 20px;
     box-shadow: var(--box-shadow);
     position: sticky;
     top: 120px;
@@ -378,7 +378,7 @@ img {
 }
 
 .products-sidebar::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 
 .products-sidebar::-webkit-scrollbar-track {
@@ -394,7 +394,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 2px solid var(--primary-color);
 }
@@ -420,9 +420,9 @@ img {
 }
 
 .filter-section {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .filter-section:last-child {
@@ -431,10 +431,10 @@ img {
 }
 
 .filter-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--dark-color);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -446,7 +446,7 @@ img {
     content: '\f078';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
-    font-size: 12px;
+    font-size: 11px;
     transition: var(--transition);
 }
 
@@ -482,7 +482,7 @@ img {
     padding: 12px 15px;
     border: none;
     outline: none;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .search-box button {
@@ -501,14 +501,14 @@ img {
 /* Size Filters */
 .size-filters .size-filter-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
 }
 
 .size-option {
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    padding: 12px;
+    padding: 8px;
     cursor: pointer;
     text-align: center;
     transition: var(--transition);
@@ -524,13 +524,13 @@ img {
 .size-option span {
     display: block;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 10px;
     color: var(--dark-color);
     margin-bottom: 4px;
 }
 
 .size-option small {
-    font-size: 12px;
+    font-size: 10px;
     color: var(--gray-color);
     display: block;
 }
@@ -556,15 +556,15 @@ img {
 
 /* Brand Filters */
 .brand-search {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .brand-search input {
     width: 100%;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 12px;
     transition: var(--transition);
 }
 
@@ -595,11 +595,11 @@ img {
 .brand-option {
     display: flex;
     align-items: center;
-    padding: 12px;
+    padding: 5px 8px;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     border: 1px solid transparent;
 }
 
@@ -609,55 +609,56 @@ img {
 }
 
 .brand-option input {
-    margin-right: 12px;
-    width: 18px;
-    height: 18px;
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
 }
 
 .brand-logo {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
-    margin-right: 12px;
+    margin-right: 10px;
     border-radius: 4px;
     padding: 4px;
     background-color: #f8f9fa;
 }
 
-.brand-logo-text {
-    width: 40px;
-    height: 40px;
+/* .brand-logo-text {
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--primary-color);
     color: var(--white);
     font-weight: bold;
-    font-size: 12px;
+    font-size: 10px;
     border-radius: 4px;
-    margin-right: 12px;
-}
+    margin-right: 10px;
+} */
 
 .brand-name {
     flex: 1;
     font-weight: 500;
     color: var(--dark-color);
+    font-size: 11px;
 }
 
 .brand-count {
     color: var(--gray-color);
-    font-size: 12px;
+    font-size: 10px;
 }
 
 /* Price Range Filter */
 .price-range-filter {
-    padding: 10px 0;
+    padding: 8px 4px;
 }
 
 .price-slider {
-    margin: 20px 0 30px;
-    height: 6px;
+    margin: 10px 0 20px;
+    height: 5px;
 }
 
 .noUi-connect {
@@ -665,8 +666,8 @@ img {
 }
 
 .noUi-handle {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background-color: var(--white);
     border: 2px solid var(--primary-color);
@@ -684,8 +685,8 @@ img {
 
 .price-inputs {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .price-input {
@@ -694,7 +695,7 @@ img {
 
 .price-input label {
     display: block;
-    font-size: 12px;
+    font-size: 10px;
     color: var(--gray-color);
     margin-bottom: 5px;
     font-weight: 500;
@@ -702,10 +703,10 @@ img {
 
 .price-input input {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border: 2px solid #e0e0e0;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 12px;
     transition: var(--transition);
 }
 
@@ -728,7 +729,7 @@ img {
 .availability-option {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 6px 8px;
     border-radius: 6px;
     cursor: pointer;
     transition: var(--transition);
@@ -755,7 +756,7 @@ img {
 .certification-name,
 .availability-name {
     flex: 1;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--dark-color);
 }
 
@@ -766,7 +767,7 @@ img {
 
 /* Filter Actions */
 .filter-actions {
-    margin-top: 25px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -12,7 +12,7 @@ const gasCylinders = [
         rating: 4.5,
         reviews: 24,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/gas-cylinder-shell-6kg.jpeg",
         description: "Compact Shell gas cylinder perfect for single persons or small families. UN certified for safety.",
         features: ["UN Certified", "5-year warranty", "Safety valve included"]
     },
@@ -28,7 +28,7 @@ const gasCylinders = [
         rating: 4.8,
         reviews: 36,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/total-gas-cylinder-13kg.jpeg",
         description: "Standard size Total gas cylinder suitable for families of 3-4 persons. ISO certified quality.",
         features: ["ISO Certified", "Durable construction", "Easy to refill"]
     },
@@ -44,7 +44,7 @@ const gasCylinders = [
         rating: 4.7,
         reviews: 28,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/2 oryx gas cylinders.jpeg",
         description: "Large Oryx gas cylinder ideal for medium families or small restaurants.",
         features: ["High capacity", "Stable base", "Safety tested"]
     },
@@ -60,7 +60,7 @@ const gasCylinders = [
         rating: 4.9,
         reviews: 42,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/shell full kit gas cylinder 13kg.webp",
         description: "Commercial grade Shell gas cylinder for hotels, restaurants, and institutions.",
         features: ["Industrial grade", "ISO Certified", "Heavy duty"]
     },
@@ -76,7 +76,7 @@ const gasCylinders = [
         rating: 4.4,
         reviews: 19,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/stabex 13kg gas cylinder.webp",
         description: "Reliable Stabex gas cylinder with enhanced safety features for peace of mind.",
         features: ["Safety lock", "Durable valve", "Easy to transport"]
     },
@@ -92,7 +92,7 @@ const gasCylinders = [
         rating: 4.2,
         reviews: 15,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/Hass 6kg blue gas cylinder.jpeg",
         description: "Affordable Hass gas cylinder perfect for students and small households.",
         features: ["Budget friendly", "Lightweight", "Easy to use"]
     },
@@ -108,7 +108,7 @@ const gasCylinders = [
         rating: 4.3,
         reviews: 22,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/Hashi 6kgs gas cylinder full kit.jpeg",
         description: "Durable Hashi gas cylinder designed for extended family use.",
         features: ["Rust resistant", "Stable design", "Long lasting"]
     },
@@ -124,7 +124,7 @@ const gasCylinders = [
         rating: 4.1,
         reviews: 17,
         inStock: false,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas6.jpg",
         description: "Modern Mogas gas cylinder with sleek design and reliable performance.",
         features: ["Modern design", "Easy grip handle", "Safety certified"]
     },
@@ -140,7 +140,7 @@ const gasCylinders = [
         rating: 4.6,
         reviews: 21,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/11kg motor gas steel bottle refill.jpg",
         description: "Eco-friendly Meru gas cylinder made with sustainable materials.",
         features: ["Eco-friendly", "Lightweight", "Portable"]
     },
@@ -156,7 +156,7 @@ const gasCylinders = [
         rating: 4.8,
         reviews: 31,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/total 13kg refill gas.jpeg",
         description: "Heavy duty Total gas cylinder for commercial and industrial applications.",
         features: ["Industrial strength", "ISO Certified", "High pressure"]
     },
@@ -172,7 +172,7 @@ const gasCylinders = [
         rating: 4.4,
         reviews: 18,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/Oryx-13kg-Gas-Cylinder-with-Gas.png.webp",
         description: "Compact Oryx gas cylinder with premium safety features.",
         features: ["Premium quality", "Safety valve", "Compact design"]
     },
@@ -188,7 +188,7 @@ const gasCylinders = [
         rating: 4.7,
         reviews: 29,
         inStock: true,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        image: "../../assets/images/gas-cylinders/shell full kit gas cylinder 13kg.webp",
         description: "Shell gas cylinder for medium to large families with ISO certification.",
         features: ["ISO Certified", "Durable", "Family size"]
     },
@@ -513,6 +513,7 @@ const gasCylinders = [
         features: ["Refillable", "ISO Certified", "Large capacity"]
     }
 ];
+
 
 // Global variables
 let currentProducts = [...gasCylinders];
