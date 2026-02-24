@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login | RonVick Gas Service Limited</title>
+    <meta name="description" content="Create an account or log in to RonVick Gas Service. Access special offers, track orders, and manage your account.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/signup-login/index.css">
+<body>
+    <!-- Top Bar with User Info -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone-alt"></i> 0788971271</span>
+                    <span><i class="fas fa-phone-alt"></i> 0776511012</span>
+                    <span><i class="fas fa-phone-alt"></i> 0707461309</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="user-info">
+                    <span id="userDisplay"></span>
+                    <button id="logoutBtn" style="display:none;">Logout</button>
+                    <a href="#" id="loginLink">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-fire"></i>
+                    <span>RonVick Gas</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="../index.html">Home</a>
+                    <a href="../products/index.html">Products</a>
+                    <a href="../services/index.html">Services</a>
+                    <a href="../about/index.html">About</a>
+                    <a href="../contact/index.html">Contact</a>
+                    <div class="mobile-contact">
+                        <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
+                        <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
+                        <a href="tel:0707461309"><i class="fas fa-phone"></i> 0707461309</a>
+                    </div>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="#" class="nav-signup-icon" id="navUserIcon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Welcome to RonVick Gas</h1>
+                <p>Sign up or log in to access special offers and manage your orders</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="signup-tab">Sign Up</div>
+                <div class="auth-tab" id="login-tab">Log In</div>
+            </div>
+            
+            <div class="auth-forms" id="authforms">
+                <!-- Sign Up Form -->
+                <form class="auth-form" id="signup-form">
+                    <div class="form-message" id="signup-message"></div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-phone">Phone Number</label>
+                        <input type="tel" id="signup-phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="password-toggle">
+                            <input type="password" id="signup-password" class="form-control" required>
+                            <button type="button" class="toggle-password" data-target="signup-password">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="password-toggle">
+                            <input type="password" id="confirm-password" class="form-control" required>
+                            <button type="button" class="toggle-password" data-target="confirm-password">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-submit">Create Account</button>
+                    
+                    <div class="divider">
+                        <span>Or sign up with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" id="switch-to-login">Log In</a>
+                    </div>
+                </form>
+                
+                <!-- Log In Form -->
+                <form class="auth-form hidden auth-form-login" id="login-form">
+                    <div class="form-message" id="login-message"></div>
+                    
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-toggle">
+                            <input type="password" id="login-password" class="form-control" required>
+                            <button type="button" class="toggle-password" data-target="login-password">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="checkbox-group" style="margin-bottom: 0;">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" id="forgot-password" style="font-size: 14px; color: var(--primary-color);">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-submit">Log In</button>
+                    
+                    <div class="divider">
+                        <span>Or log in with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>RonVick Gas</span>
+                    </div>
+                    <p>Your trusted provider of high-quality gas cylinders and accessories in Kasana Luwero since 2010.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../products/index.html">Products</a></li>
+                        <li><a href="../services/index.html">Services</a></li>
+                        <li><a href="../about/index.html">About Us</a></li>
+                        <li><a href="../contact/index.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="../products/index.html#lpg">LPG Cylinders</a></li>
+                        <li><a href="../products/index.html#oxygen">Oxygen Cylinders</a></li>
+                        <li><a href="../products/index.html#accessories">Gas Accessories</a></li>
+                        <li><a href="../products/index.html#safety">Safety Equipment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kasana Luwero near MC Petro Station at the mast</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <a href="tel:0788971271">0788971271</a>
+                                <a href="tel:0776511012">0776511012</a>
+                                <a href="tel:0707461309">0707461309</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="mobile-bottom-nav">
+        <a href="../index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="../products/index.html" class="mobile-nav-item">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Products</span>
+        </a>
+        <a href="tel:0788971271" class="mobile-nav-item">
+            <i class="fas fa-phone"></i>
+            <span>Call Us</span>
+        </a>
+        <a href="../account/index.html" class="mobile-nav-item active">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+        </a>
+        <a href="../cart/index.html" class="mobile-nav-item cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ==================== CONFIGURATION ====================
+        const API_BASE_URL = 'http://localhost:3000';  // Change to your deployed URL later
+
+        // ==================== DOM ELEMENTS ====================
+        // Top bar user info
+        const userDisplay = document.getElementById('userDisplay');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginLink = document.getElementById('loginLink');
+        const navUserIcon = document.getElementById('navUserIcon');
+
+        // Cart elements
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        const cartIcon = document.getElementById('cartIcon');
+
+        // Auth tabs & forms
+        const signupTab = document.getElementById('signup-tab');
+        const loginTab = document.getElementById('login-tab');
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToSignup = document.getElementById('switch-to-signup');
+
+        // Form message containers
+        const signupMessage = document.getElementById('signup-message');
+        const loginMessage = document.getElementById('login-message');
+
+        // Password toggle buttons
+        const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+
+        // ==================== HELPER FUNCTIONS ====================
+        function updateCartCount(count) {
+            cartCountElements.forEach(el => { el.textContent = count; });
+        }
+
+        async function fetchCartCount() {
+            const token = localStorage.getItem('token');
+            if (!token) return;
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/cart`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (response.ok) {
+                    const cart = await response.json();
+                    const count = cart.items ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
+                    updateCartCount(count);
+                }
+            } catch (error) {
+                console.error('Failed to fetch cart count:', error);
+            }
+        }
+
+        function showMessage(element, text, type) {
+            element.textContent = text;
+            element.className = `form-message ${type}`;
+            // Hide after 5 seconds
+            setTimeout(() => {
+                element.classList.remove(type);
+                element.style.display = 'none';
+            }, 5000);
+        }
+
+        // Update UI based on login status
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            if (token && user) {
+                userDisplay.textContent = `Hi, ${user.name}`;
+                logoutBtn.style.display = 'inline-block';
+                loginLink.style.display = 'none';
+                navUserIcon.href = 'account.html'; // link to account page if you have one
+            } else {
+                userDisplay.textContent = '';
+                logoutBtn.style.display = 'none';
+                loginLink.style.display = 'inline-block';
+                navUserIcon.href = 'signup.html';
+            }
+        }
+
+        // Redirect if already logged in
+        if (localStorage.getItem('token')) {
+            // User is already logged in, redirect to home page
+            window.location.href = 'index.html';
+        }
+
+        // ==================== AUTH FUNCTIONS ====================
+        async function handleRegister(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById('first-name').value.trim();
+            const lastName = document.getElementById('last-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const phone = document.getElementById('signup-phone').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Validation
+            if (!terms) {
+                showMessage(signupMessage, 'Please agree to the Terms of Service and Privacy Policy', 'error');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showMessage(signupMessage, 'Passwords do not match', 'error');
+                return;
+            }
+            if (password.length < 6) {
+                showMessage(signupMessage, 'Password must be at least 6 characters', 'error');
+                return;
+            }
+
+            // Prepare data for backend (combine first and last name)
+            const name = `${firstName} ${lastName}`;
+            const address = ''; // You may collect address later or add field
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password, phone, address })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Registration failed');
+                }
+
+                // Success
+                showMessage(signupMessage, 'Registration successful! Redirecting to login...', 'success');
+                
+                // Optionally pre-fill login email
+                document.getElementById('login-email').value = email;
+
+                // Switch to login tab after a short delay
+                setTimeout(() => {
+                    showLoginForm();
+                    showMessage(loginMessage, 'Please log in with your new account', 'success');
+                }, 2000);
+
+                // Clear signup form
+                signupForm.reset();
+            } catch (error) {
+                showMessage(signupMessage, error.message, 'error');
+            }
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            if (!email || !password) {
+                showMessage(loginMessage, 'Please fill in all fields', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Login failed');
+                }
+
+                // Store token and user info
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+
+                showMessage(loginMessage, 'Login successful! Redirecting...', 'success');
+
+                // Redirect to home page (or previous page)
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } catch (error) {
+                showMessage(loginMessage, error.message, 'error');
+            }
+        }
+
+        // ==================== TAB SWITCHING ====================
+        function showSignupForm() {
+            signupTab.classList.add('active');
+            loginTab.classList.remove('active');
+            signupForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+
+        function showLoginForm() {
+            signupTab.classList.remove('active');
+            loginTab.classList.add('active');
+            signupForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        // Auth tabs
+        signupTab.addEventListener('click', showSignupForm);
+        loginTab.addEventListener('click', showLoginForm);
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLoginForm();
+        });
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSignupForm();
+        });
+
+        // Form submissions
+        signupForm.addEventListener('submit', handleRegister);
+        loginForm.addEventListener('submit', handleLogin);
+
+        // Password visibility toggle
+        togglePasswordButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                const icon = button.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+
+        // Forgot password placeholder
+        document.getElementById('forgot-password').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Password reset functionality will be implemented soon.');
+        });
+
+        // Social login placeholder
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const platform = btn.classList.contains('facebook') ? 'Facebook' : 'Google';
+                alert(`${platform} login is not yet implemented.`);
+            });
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            checkLoginStatus();
+            updateCartCount(0);
+            // Redirect to signup page after logout
+            window.location.href = 'signup.html';
+        });
+
+        // ==================== MOBILE MENU ====================
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // ==================== CART CLICK ====================
+        cartIcon.addEventListener('click', () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                window.location.href = 'cart/index.html';
+            } else {
+                alert('Please log in to view your cart.');
+                showLoginForm();
+            }
+        });
+
+        // ==================== INITIALIZE PAGE ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check login status (though we already redirect if logged in)
+            checkLoginStatus();
+            // If by some chance token appears after redirect, still fine
+            fetchCartCount();
+        });
+    </script>
+</body>
+</html>

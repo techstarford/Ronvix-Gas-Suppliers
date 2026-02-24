@@ -281,7 +281,7 @@ img {
     align-items: center;
     cursor: pointer;
     color: var(--dark-color);
-    font-size: 28px; /* slightly larger for visibility */
+    font-size: 28px;
     transition: var(--transition);
 }
 
