@@ -3,47 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Gas Accessories | RonVick Gas Service Limited</title>
-    <meta name="description" content="Browse our wide selection of high-quality gas accessories at RonVick Gas Service Limited. Free delivery in Kasana Luwero.">
+    <meta name="description" content="Explore our range of gas accessories: regulators, hoses, adapters, safety equipment and more.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/css/products/gas-accessories/gas-acessories.css"> 
+    <link rel="stylesheet" href="../../assets/css/products/gas-accessories/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Additional minimal styles for dynamic elements */
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-left: 1rem;
-        }
-        #userDisplay {
-            font-weight: 500;
-            color: var(--primary-color, #e67e22);
-        }
-        #logoutBtn {
-            background: none;
-            border: 1px solid #ddd;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        #logoutBtn:hover {
-            background: #f0f0f0;
-        }
-        .error-message {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            color: #e74c3c;
-            font-size: 1.1rem;
-        }
-        .product-card .add-to-cart.added {
-            background-color: #2ecc71;
-        }
-    </style>
 </head>
 <body>
     <!-- Top Bar -->
@@ -60,11 +27,10 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <!-- User info (dynamic) -->
                 <div class="user-info">
                     <span id="userDisplay"></span>
                     <button id="logoutBtn" style="display:none;">Logout</button>
-                    <a href="../../signup.html" id="loginLink">Login</a>
+                    <a href="#" id="loginLink">Login</a>
                 </div>
             </div>
         </div>
@@ -80,11 +46,11 @@
                 </a>
                 
                 <div class="nav-links" id="navLinks">
-                    <a href="../index.html">Home</a>
+                    <a href="../../index.html">Home</a>
                     <a href="../../products/index.html">Products</a>
-                    <a href="../../services.html">Services</a>
-                    <a href="../../about.html">About</a>
-                    <a href="../../contact.html">Contact</a>
+                    <a href="../../services/index.html">Services</a>
+                    <a href="../../about/index.html">About</a>
+                    <a href="../../contact/index.html">Contact</a>
                     <div class="mobile-contact">
                         <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
                         <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
@@ -93,10 +59,23 @@
                 </div>
                 
                 <div class="nav-icons">
-                    <div class="cart-icon">
+                    <!-- User Icon with Dropdown -->
+                    <div class="user-dropdown-container">
+                        <a href="#" class="user-icon" id="userIcon">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="dropdown-header" id="dropdownHeader">Account</div>
+                            <a href="../../account/index.html" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                            <a href="../../account/orders.html" class="dropdown-item"><i class="fas fa-box"></i> Orders</a>
+                            <a href="#" class="dropdown-item" id="dropdownLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    <!-- Cart Icon -->
+                    <a href="../../cart/index.html" class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
-                    </div>
+                    </a>
                     <div class="hamburger" id="hamburger">
                         <div class="bar"></div>
                         <div class="bar"></div>
@@ -107,8 +86,8 @@
         </div>
     </header>
 
-    <!-- Gas Accessories Page Content -->
-    <main class="products-page">
+    <!-- Accessories Page Content -->
+    <main class="accessories-page">
         <div class="container">
             <!-- Page Header -->
             <div class="page-header">
@@ -118,19 +97,18 @@
                     <span>/</span>
                     <a href="../../products/index.html">Products</a>
                     <span>/</span>
-                    <span>Gas Accessories</span>
+                    <span>Accessories</span>
                 </div>
             </div>
 
-            <div class="products-content">
+            <div class="accessories-content">
                 <!-- Filter Toggle Button (Mobile Only) -->
                 <button class="filter-toggle" id="filterToggle">
                     <i class="fas fa-filter"></i> Filters
                 </button>
 
-                <!-- Sidebar Filters (static for now) -->
-                <aside class="products-sidebar" id="productsSidebar">
-                    <!-- (Keep your existing sidebar content unchanged) -->
+                <!-- Sidebar Filters -->
+                <aside class="accessories-sidebar" id="accessoriesSidebar">
                     <div class="sidebar-header">
                         <h3>Filters</h3>
                         <button class="sidebar-close" id="sidebarClose">
@@ -143,156 +121,238 @@
                         <h4 class="filter-title">Search</h4>
                         <div class="filter-content">
                             <div class="search-box">
-                                <input type="text" placeholder="Search accessories...">
-                                <button><i class="fas fa-search"></i></button>
+                                <input type="text" id="searchInput" placeholder="Search accessories...">
+                                <button id="searchBtn"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Categories Filter (static) -->
+                    <!-- Categories Filter -->
                     <div class="filter-section">
-                        <h4 class="filter-title">Categories</h4>
+                        <h4 class="filter-title">Category</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="categoryFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="all" id="catAll" checked>
                                         <span class="checkmark"></span>
-                                        <a href="../../products/index.html">All Products</a>
+                                        All Accessories
                                     </label>
+                                    <span class="filter-count" id="catCountAll">(24)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="Accessories" id="catAccessories">
                                         <span class="checkmark"></span>
-                                        Gas Accessories
+                                        General Accessories
                                     </label>
-                                    <span class="filter-count">(10)</span>
+                                    <span class="filter-count" id="catCountAccessories">(8)</span>
                                 </li>
-                                <!-- ... other categories ... -->
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Safety Equipment" id="catSafety">
+                                        <span class="checkmark"></span>
+                                        Safety Equipment
+                                    </label>
+                                    <span class="filter-count" id="catCountSafety">(5)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Cooking Equipment" id="catCooking">
+                                        <span class="checkmark"></span>
+                                        Cooking Equipment
+                                    </label>
+                                    <span class="filter-count" id="catCountCooking">(4)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Outdoor" id="catOutdoor">
+                                        <span class="checkmark"></span>
+                                        Outdoor
+                                    </label>
+                                    <span class="filter-count" id="catCountOutdoor">(3)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Heating" id="catHeating">
+                                        <span class="checkmark"></span>
+                                        Heating
+                                    </label>
+                                    <span class="filter-count" id="catCountHeating">(2)</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Price Range Filter (static) -->
+                    <!-- Price Range Filter -->
                     <div class="filter-section">
-                        <h4 class="filter-title">Price Range</h4>
+                        <h4 class="filter-title">Price Range (UGX)</h4>
                         <div class="filter-content">
                             <div class="price-range">
                                 <div class="price-slider">
-                                    <input type="range" min="0" max="150000" value="75000" step="5000" id="priceRange">
+                                    <input type="range" min="0" max="500000" value="250000" step="5000" id="priceRange">
                                 </div>
                                 <div class="price-inputs">
                                     <div class="price-input">
                                         <label>Min</label>
-                                        <input type="number" value="0" min="0" max="150000" id="minPrice">
+                                        <input type="number" value="0" min="0" max="500000" id="minPrice">
                                     </div>
                                     <div class="price-input">
                                         <label>Max</label>
-                                        <input type="number" value="150000" min="0" max="150000" id="maxPrice">
+                                        <input type="number" value="500000" min="0" max="500000" id="maxPrice">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Brand Filter (static) -->
+                    <!-- Brand Filter -->
                     <div class="filter-section">
                         <h4 class="filter-title">Brand</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="brandFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="all" id="brandAll" checked>
                                         <span class="checkmark"></span>
                                         All Brands
                                     </label>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="RonVick" id="brandRonvick">
                                         <span class="checkmark"></span>
                                         RonVick
                                     </label>
-                                    <span class="filter-count">(5)</span>
-                                </li>
-                                <!-- ... other brands ... -->
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Compatibility Filter (static) -->
-                    <div class="filter-section">
-                        <h4 class="filter-title">Compatibility</h4>
-                        <div class="filter-content">
-                            <ul class="filter-list">
-                                <li>
-                                    <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                        All Types
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="filter-checkbox">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                        13kg Cylinder
-                                    </label>
                                     <span class="filter-count">(8)</span>
                                 </li>
-                                <!-- ... -->
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="GasPro" id="brandGaspro">
+                                        <span class="checkmark"></span>
+                                        GasPro
+                                    </label>
+                                    <span class="filter-count">(5)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="SafeGas" id="brandSafegas">
+                                        <span class="checkmark"></span>
+                                        SafeGas
+                                    </label>
+                                    <span class="filter-count">(4)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="FlameMaster" id="brandFlamemaster">
+                                        <span class="checkmark"></span>
+                                        FlameMaster
+                                    </label>
+                                    <span class="filter-count">(3)</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Rating Filter (static) -->
+                    <!-- Availability Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-title">Availability</h4>
+                        <div class="filter-content">
+                            <ul class="filter-list" id="availabilityFilter">
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="all" id="availAll" checked>
+                                        <span class="checkmark"></span>
+                                        All Items
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="in_stock" id="availInStock">
+                                        <span class="checkmark"></span>
+                                        In Stock
+                                    </label>
+                                    <span class="filter-count">(18)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="out_of_stock" id="availOutOfStock">
+                                        <span class="checkmark"></span>
+                                        Out of Stock
+                                    </label>
+                                    <span class="filter-count">(2)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
                     <div class="filter-section">
                         <h4 class="filter-title">Rating</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="ratingFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="all" id="ratingAll" checked>
                                         <span class="checkmark"></span>
                                         All Ratings
                                     </label>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="5" id="rating5">
                                         <span class="checkmark"></span>
                                         <div class="rating-stars">
                                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                         </div>
                                     </label>
+                                    <span class="filter-count">(7)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="4" id="rating4">
+                                        <span class="checkmark"></span>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                        </div>
+                                    </label>
                                     <span class="filter-count">(6)</span>
                                 </li>
-                                <!-- ... -->
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="3" id="rating3">
+                                        <span class="checkmark"></span>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                        </div>
+                                    </label>
+                                    <span class="filter-count">(4)</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary apply-filters">Apply Filters</button>
-                    <button class="btn btn-outline reset-filters">Reset Filters</button>
+                    <button class="btn btn-primary apply-filters" id="applyFilters">Apply Filters</button>
+                    <button class="btn btn-outline reset-filters" id="resetFilters">Reset Filters</button>
                 </aside>
 
                 <!-- Main Products Grid -->
-                <div class="products-main">
+                <div class="accessories-main">
                     <!-- Products Sorting -->
                     <div class="products-sorting">
                         <div class="sorting-left">
-                            <p>Showing <span>1-10</span> of <span id="totalProducts">0</span> accessories</p>
+                            <p>Showing <span id="showingStart">1</span>-<span id="showingEnd">12</span> of <span id="totalProducts">20</span> accessories</p>
                         </div>
                         <div class="sorting-right">
                             <div class="sort-by">
                                 <label>Sort by:</label>
                                 <select id="sortSelect">
-                                    <option>Default</option>
-                                    <option>Price: Low to High</option>
-                                    <option>Price: High to Low</option>
-                                    <option>Most Popular</option>
-                                    <option>Highest Rating</option>
+                                    <option value="default">Default</option>
+                                    <option value="price_asc">Price: Low to High</option>
+                                    <option value="price_desc">Price: High to Low</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="rating">Highest Rating</option>
+                                    <option value="newest">Newest</option>
                                 </select>
                             </div>
                             <div class="view-mode">
@@ -302,31 +362,22 @@
                         </div>
                     </div>
 
-                    <!-- Products Grid (will be populated dynamically) -->
-                    <div class="products-grid" id="productsGrid"></div>
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be dynamically injected -->
+                    </div>
 
-                    <!-- Category Description (unchanged) -->
-                    <div class="category-description">
-                        <h2>Why Choose RonVick Gas Accessories?</h2>
-                        <p>At RonVick Gas Service Limited, we offer only the highest quality gas accessories to ensure safety, efficiency, and longevity of your gas systems. Our accessories are:</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Certified for safety and reliability</li>
-                            <li><i class="fas fa-check-circle"></i> Compatible with all major gas cylinder brands</li>
-                            <li><i class="fas fa-check-circle"></i> Made from durable, high-quality materials</li>
-                            <li><i class="fas fa-check-circle"></i> Backed by our 1-year warranty</li>
-                            <li><i class="fas fa-check-circle"></i> Available with free delivery in Kasana Luwero</li>
-                        </ul>
-                        <p>For professional installation and maintenance services, <a href="../services.html">contact our service team</a>.</p>
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be dynamically injected -->
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer (unchanged, but keep it) -->
+    <!-- Footer -->
     <footer class="footer">
-        <!-- ... your existing footer ... -->
-        <!-- For brevity, I'll include a simplified version; you should copy your full footer here -->
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col footer-about">
@@ -347,53 +398,35 @@
                     <ul>
                         <li><a href="../../index.html">Home</a></li>
                         <li><a href="../../products/index.html">Products</a></li>
-                        <li><a href="../../services.html">Services</a></li>
-                        <li><a href="../../about.html">About Us</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
+                        <li><a href="../../services/index.html">Services</a></li>
+                        <li><a href="../../about/index.html">About Us</a></li>
+                        <li><a href="../../contact/index.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Products</h3>
                     <ul>
-                        <li><a href="../../products/gas-cylinders.html">LPG Cylinders</a></li>
-                        <li><a href="../../products/gas-accessories.html" class="active">Gas Accessories</a></li>
-                        <li><a href="../../products/safety-equipment.html">Safety Equipment</a></li>
-                        <li><a href="../../products/cooking-equipment.html">Cooking Equipment</a></li>
+                        <li><a href="../../products/index.html#lpg">LPG Cylinders</a></li>
+                        <li><a href="../../products/index.html#oxygen">Oxygen Cylinders</a></li>
+                        <li><a href="#">Gas Accessories</a></li>
+                        <li><a href="../../products/index.html#safety">Safety Equipment</a></li>
+                        <li><a href="../../products/index.html#industrial">Industrial Solutions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col footer-contact">
+                <div class="footer-col footer-contact"> 
                     <h3>Contact Us</h3>
                     <ul>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kasana Luwero near MC Petro Station at the mast</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <a href="tel:0788971271">0788971271</a>
-                                <a href="tel:0776511012">0776511012</a>
-                                <a href="tel:0707461309">0707461309</a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Kasana Luwero near MC Petro Station at the mast</span></li>
+                        <li><i class="fas fa-phone"></i><div><a href="tel:0788971271">0788971271</a> <a href="tel:0776511012">0776511012</a> <a href="tel:0707461309">0707461309</a></div></li>
+                        <li><i class="fas fa-envelope"></i><a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a></li>
+                        <li><i class="fas fa-clock"></i><span>Mon-Sat: 8:00 AM - 6:00 PM</span></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2023 RonVick Gas Service Limited. All Rights Reserved.</p>
-                    <div class="footer-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
+                    <p>&copy; 2026 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
                 </div>
             </div>
         </div>
@@ -401,339 +434,96 @@
 
     <!-- Mobile Bottom Nav -->
     <div class="mobile-bottom-nav">
-        <a href="../../index.html" class="mobile-nav-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="../../products/index.html" class="mobile-nav-item">
-            <i class="fas fa-shopping-bag"></i>
-            <span>Products</span>
-        </a>
-        <a href="tel:0788971271" class="mobile-nav-item">
-            <i class="fas fa-phone"></i>
-            <span>Call Us</span>
-        </a>
-        <a href="../../signup.html" class="mobile-nav-item">
-            <i class="fas fa-user"></i>
-            <span>SignUp</span>
-        </a>
-        <a href="../../cart/index.html" class="mobile-nav-item cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-            <span class="cart-count">0</span>
-        </a>
+        <a href="../../index.html" class="mobile-nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="../../products/index.html" class="mobile-nav-item"><i class="fas fa-shopping-bag"></i><span>Products</span></a>
+        <a href="tel:0788971271" class="mobile-nav-item"><i class="fas fa-phone"></i><span>Call Us</span></a>
+        <a href="../../account/index.html" class="mobile-nav-item" id="mobileUserIcon"><i class="fas fa-user"></i><span>Account</span></a>
+        <a href="../../cart/index.html" class="mobile-nav-item cart-icon"><i class="fas fa-shopping-cart"></i><span>Cart</span><span class="cart-count">0</span></a>
     </div>
 
-    <!-- Quick View Modal (unchanged) -->
+    <!-- Quick View Modal -->
     <div class="modal quick-view-modal" id="quickViewModal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
-            <div class="quick-view-content">
-                <!-- Content will be loaded via JavaScript -->
+            <div class="quick-view-content"></div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content auth-modal-content">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            <div class="auth-header">
+                <h2>Welcome to RonVick Gas</h2>
+                <p>Sign in to your account or create one to enjoy personalised services</p>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Login</button>
+                <button class="auth-tab" id="signupTab">Create Account</button>
+            </div>
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="auth-divider">
+                        <span>or continue with</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </form>
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <small>At least 8 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="terms">
+                            <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    <div class="auth-divider">
+                        <span>or sign up with</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Main JavaScript -->
-    <script>
-        // ==================== CONFIGURATION ====================
-        const API_BASE_URL = 'http://localhost:3000'; // Change to your deployed URL later
-
-        // ==================== DOM ELEMENTS ====================
-        const productsGrid = document.getElementById('productsGrid');
-        const cartCountElements = document.querySelectorAll('.cart-count');
-        const totalProductsSpan = document.getElementById('totalProducts');
-        const userDisplay = document.getElementById('userDisplay');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const loginLink = document.getElementById('loginLink');
-        const sortSelect = document.getElementById('sortSelect');
-
-        // ==================== HELPER FUNCTIONS ====================
-        function updateCartCount(count) {
-            cartCountElements.forEach(el => { el.textContent = count; });
-        }
-
-        function updateProductCount(total) {
-            if (totalProductsSpan) {
-                totalProductsSpan.textContent = total;
-            }
-            // Update showing range (simplified)
-            const showingSpan = document.querySelector('.sorting-left p span:first-child');
-            if (showingSpan) {
-                showingSpan.textContent = total > 0 ? `1-${Math.min(total, 10)}` : '0-0';
-            }
-        }
-
-        function checkLoginStatus() {
-            const token = localStorage.getItem('token');
-            const user = JSON.parse(localStorage.getItem('user') || 'null');
-            if (token && user) {
-                userDisplay.textContent = `Hi, ${user.name}`;
-                logoutBtn.style.display = 'inline-block';
-                loginLink.style.display = 'none';
-            } else {
-                userDisplay.textContent = '';
-                logoutBtn.style.display = 'none';
-                loginLink.style.display = 'inline-block';
-            }
-        }
-
-        // ==================== FETCH PRODUCTS ====================
-        async function loadProducts() {
-            try {
-                productsGrid.innerHTML = '<div class="loading" style="grid-column:1/-1; text-align:center; padding:3rem;"><i class="fas fa-spinner fa-spin"></i> Loading products...</div>';
-                const response = await fetch(`${API_BASE_URL}/api/products`);
-                if (!response.ok) throw new Error('Failed to load products');
-                let products = await response.json();
-                
-                // Optional: filter by category if needed? For now show all.
-                updateProductCount(products.length);
-                
-                // Sort if needed
-                // (Will implement sort later)
-                
-                renderProducts(products);
-            } catch (error) {
-                console.error('Error loading products:', error);
-                productsGrid.innerHTML = '<p class="error-message">Failed to load products. Please try again later.</p>';
-            }
-        }
-
-        function renderProducts(products) {
-            productsGrid.innerHTML = ''; // Clear loading/previous
-            if (products.length === 0) {
-                productsGrid.innerHTML = '<p class="error-message">No products found.</p>';
-                return;
-            }
-            products.forEach(product => renderProductCard(product));
-        }
-
-        function renderProductCard(product) {
-            // Badges
-            let badgesHtml = '';
-            if (product.isBestSeller) {
-                badgesHtml += '<span class="product-badge best-seller">Best Seller</span>';
-            }
-            if (product.discount > 0) {
-                badgesHtml += `<span class="product-badge discount">-${product.discount}%</span>`;
-            }
-
-            // Price
-            const currentPrice = product.price;
-            let priceHtml = `<span class="current-price">UGX ${currentPrice.toLocaleString()}</span>`;
-            if (product.discount > 0) {
-                const oldPrice = currentPrice / (1 - product.discount/100);
-                priceHtml += `<span class="old-price">UGX ${Math.round(oldPrice).toLocaleString()}</span>`;
-            }
-
-            // Rating (dummy for now)
-            const ratingHtml = `
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <span class="rating-count">(0)</span>
-            `;
-
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.dataset.id = product._id;
-            card.innerHTML = `
-                <div class="product-badges">${badgesHtml}</div>
-                <div class="product-img">
-                    <img src="${product.imageUrl || '../../assets/images/placeholder.jpg'}" alt="${product.name}">
-                    <div class="product-actions">
-                        <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                        <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <p class="product-category">${product.category}</p>
-                    <h3 class="product-title">${product.name}</h3>
-                    <p class="product-description">${product.description}</p>
-                    <div class="product-price">${priceHtml}</div>
-                    <div class="product-rating">${ratingHtml}</div>
-                    <button class="add-to-cart" data-id="${product._id}">Add to Cart</button>
-                </div>
-            `;
-            productsGrid.appendChild(card);
-        }
-
-        // ==================== CART FUNCTIONS ====================
-        async function addToCart(productId, button) {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                alert('Please log in to add items to your cart');
-                window.location.href = '../../signup.html'; // Redirect to signup
-                return;
-            }
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/cart/add`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({ productId, quantity: 1 })
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.error);
-                }
-
-                const cart = await response.json();
-                const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
-                updateCartCount(itemCount);
-
-                // Visual feedback
-                button.classList.add('added');
-                button.innerHTML = '<i class="fas fa-check"></i> Added';
-                setTimeout(() => {
-                    button.classList.remove('added');
-                    button.innerHTML = 'Add to Cart';
-                }, 2000);
-            } catch (error) {
-                console.error('Add to cart error:', error);
-                alert('Failed to add item: ' + error.message);
-            }
-        }
-
-        async function fetchCartCount() {
-            const token = localStorage.getItem('token');
-            if (!token) return;
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/cart`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                if (response.ok) {
-                    const cart = await response.json();
-                    const count = cart.items ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
-                    updateCartCount(count);
-                }
-            } catch (error) {
-                console.error('Failed to fetch cart count:', error);
-            }
-        }
-
-        // ==================== EVENT LISTENERS ====================
-        // Add to cart via event delegation
-        productsGrid.addEventListener('click', (e) => {
-            const addButton = e.target.closest('.add-to-cart');
-            if (addButton) {
-                e.preventDefault();
-                const productId = addButton.dataset.id;
-                addToCart(productId, addButton);
-            }
-        });
-
-        // Logout
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            checkLoginStatus();
-            updateCartCount(0);
-        });
-
-        // Sort (simple reload for now – you can enhance later)
-        sortSelect.addEventListener('change', async () => {
-            // For simplicity, just reload products (you could add sort query param)
-            await loadProducts();
-        });
-
-        // ==================== INITIALIZE PAGE ====================
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Mobile menu etc. (keep your existing code from original)
-            // We'll include the essential mobile toggles from the original script.
-            // (I'll copy the relevant parts from your original script and adapt)
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-            const filterToggle = document.getElementById('filterToggle');
-            const productsSidebar = document.getElementById('productsSidebar');
-            const sidebarClose = document.getElementById('sidebarClose');
-
-            if (hamburger) {
-                hamburger.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                    hamburger.classList.toggle('active');
-                });
-            }
-
-            if (filterToggle && productsSidebar) {
-                filterToggle.addEventListener('click', function() {
-                    productsSidebar.classList.add('active');
-                });
-            }
-
-            if (sidebarClose) {
-                sidebarClose.addEventListener('click', function() {
-                    productsSidebar.classList.remove('active');
-                });
-            }
-
-            // View mode toggle
-            const viewBtns = document.querySelectorAll('.view-btn');
-            viewBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    viewBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    if (this.dataset.view === 'list') {
-                        productsGrid.classList.add('list-view');
-                    } else {
-                        productsGrid.classList.remove('list-view');
-                    }
-                });
-            });
-
-            // Price range sync (from original)
-            const priceRange = document.getElementById('priceRange');
-            const minPrice = document.getElementById('minPrice');
-            const maxPrice = document.getElementById('maxPrice');
-            if (priceRange && minPrice) {
-                priceRange.addEventListener('input', function() {
-                    minPrice.value = this.value;
-                });
-                minPrice.addEventListener('input', function() {
-                    priceRange.value = this.value;
-                });
-            }
-
-            // Wishlist toggle (static)
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('.add-to-wishlist')) {
-                    e.preventDefault();
-                    const btn = e.target.closest('.add-to-wishlist');
-                    btn.classList.toggle('active');
-                    btn.innerHTML = btn.classList.contains('active') 
-                        ? '<i class="fas fa-heart"></i>' 
-                        : '<i class="far fa-heart"></i>';
-                }
-            });
-
-            // Quick view (stub – you can implement later)
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('.quick-view')) {
-                    e.preventDefault();
-                    const modal = document.getElementById('quickViewModal');
-                    if (modal) modal.classList.add('active');
-                }
-            });
-            const modalClose = document.querySelector('.modal-close');
-            if (modalClose) {
-                modalClose.addEventListener('click', () => {
-                    document.getElementById('quickViewModal').classList.remove('active');
-                });
-            }
-
-            // Check login status
-            checkLoginStatus();
-
-            // Load products
-            await loadProducts();
-
-            // Fetch cart count if logged in
-            await fetchCartCount();
-        });
-    </script>
+    <script src="../../assets/js/products/gas-accessories/gas-accessories.js"></script>
 </body>
 </html>

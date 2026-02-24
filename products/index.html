@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Gas Products | RonVick Gas Service Limited</title>
     <meta name="description" content="Browse our wide selection of gas cylinders and accessories at RonVick Gas Service Limited. Free delivery in Kasana Luwero.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/products/products.css">
+    <link rel="stylesheet" href="../assets/css/products/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,6 +27,11 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
+                <div class="user-info">
+                    <span id="userDisplay"></span>
+                    <button id="logoutBtn" style="display:none;">Logout</button>
+                    <a href="#" id="loginLink">Login</a>
+                </div>
             </div>
         </div>
     </div>
@@ -43,9 +48,9 @@
                 <div class="nav-links" id="navLinks">
                     <a href="../index.html">Home</a>
                     <a href="../products/index.html" class="active">Products</a>
-                    <a href="../services.html">Services</a>
-                    <a href="../about.html">About</a>
-                    <a href="../about.html">Contact</a>
+                    <a href="../services/index.html">Services</a>
+                    <a href="../about/index.html">About</a>
+                    <a href="../contact/index.html">Contact</a>
                     <div class="mobile-contact">
                         <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
                         <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
@@ -54,10 +59,23 @@
                 </div>
                 
                 <div class="nav-icons">
-                    <div class="cart-icon">
+                    <!-- User Icon with Dropdown -->
+                    <div class="user-dropdown-container">
+                        <a href="#" class="user-icon" id="userIcon">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="dropdown-header" id="dropdownHeader">Account</div>
+                            <a href="../account/index.html" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                            <a href="../account/orders.html" class="dropdown-item"><i class="fas fa-box"></i> Orders</a>
+                            <a href="#" class="dropdown-item" id="dropdownLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    <!-- Cart Icon -->
+                    <a href="../cart/index.html" class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
-                    </div>
+                    </a>
                     <div class="hamburger" id="hamburger">
                         <div class="bar"></div>
                         <div class="bar"></div>
@@ -101,8 +119,8 @@
                         <h4 class="filter-title">Search</h4>
                         <div class="filter-content">
                             <div class="search-box">
-                                <input type="text" placeholder="Search products...">
-                                <button><i class="fas fa-search"></i></button>
+                                <input type="text" id="searchInput" placeholder="Search products...">
+                                <button id="searchBtn"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
@@ -111,46 +129,70 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Categories</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="categoryFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="all" id="catAll" checked>
                                         <span class="checkmark"></span>
                                         All Categories
                                     </label>
-                                    <span class="filter-count">(24)</span>
+                                    <span class="filter-count" id="catCountAll">(24)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="LPG Cylinders" id="catLpg">
                                         <span class="checkmark"></span>
                                         LPG Cylinders
                                     </label>
-                                    <span class="filter-count">(8)</span>
+                                    <span class="filter-count" id="catCountLpg">(8)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="Oxygen Cylinders" id="catOxygen">
                                         <span class="checkmark"></span>
                                         Oxygen Cylinders
                                     </label>
-                                    <span class="filter-count">(4)</span>
+                                    <span class="filter-count" id="catCountOxygen">(4)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="Accessories" id="catAccessories">
                                         <span class="checkmark"></span>
                                         Gas Accessories
                                     </label>
-                                    <span class="filter-count">(7)</span>
+                                    <span class="filter-count" id="catCountAccessories">(7)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="Safety Equipment" id="catSafety">
                                         <span class="checkmark"></span>
                                         Safety Equipment
                                     </label>
-                                    <span class="filter-count">(5)</span>
+                                    <span class="filter-count" id="catCountSafety">(5)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Cooking Equipment" id="catCooking">
+                                        <span class="checkmark"></span>
+                                        Cooking Equipment
+                                    </label>
+                                    <span class="filter-count" id="catCountCooking">(4)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Outdoor" id="catOutdoor">
+                                        <span class="checkmark"></span>
+                                        Outdoor
+                                    </label>
+                                    <span class="filter-count" id="catCountOutdoor">(3)</span>
+                                </li>
+                                <li>
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox" value="Heating" id="catHeating">
+                                        <span class="checkmark"></span>
+                                        Heating
+                                    </label>
+                                    <span class="filter-count" id="catCountHeating">(2)</span>
                                 </li>
                             </ul>
                         </div>
@@ -158,7 +200,7 @@
 
                     <!-- Price Range Filter -->
                     <div class="filter-section">
-                        <h4 class="filter-title">Price Range</h4>
+                        <h4 class="filter-title">Price Range (UGX)</h4>
                         <div class="filter-content">
                             <div class="price-range">
                                 <div class="price-slider">
@@ -182,17 +224,17 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Brand</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="brandFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="all" id="brandAll" checked>
                                         <span class="checkmark"></span>
                                         All Brands
                                     </label>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="RonVick" id="brandRonvick">
                                         <span class="checkmark"></span>
                                         RonVick
                                     </label>
@@ -200,7 +242,7 @@
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="GasPro" id="brandGaspro">
                                         <span class="checkmark"></span>
                                         GasPro
                                     </label>
@@ -208,7 +250,7 @@
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="SafeGas" id="brandSafegas">
                                         <span class="checkmark"></span>
                                         SafeGas
                                     </label>
@@ -216,7 +258,7 @@
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="FlameMaster" id="brandFlamemaster">
                                         <span class="checkmark"></span>
                                         FlameMaster
                                     </label>
@@ -230,17 +272,17 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Availability</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="availabilityFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="all" id="availAll" checked>
                                         <span class="checkmark"></span>
                                         All Items
                                     </label>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="in_stock" id="availInStock">
                                         <span class="checkmark"></span>
                                         In Stock
                                     </label>
@@ -248,7 +290,7 @@
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="out_of_stock" id="availOutOfStock">
                                         <span class="checkmark"></span>
                                         Out of Stock
                                     </label>
@@ -262,52 +304,40 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Rating</h4>
                         <div class="filter-content">
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="ratingFilter">
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" value="all" id="ratingAll" checked>
                                         <span class="checkmark"></span>
                                         All Ratings
                                     </label>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="5" id="rating5">
                                         <span class="checkmark"></span>
                                         <div class="rating-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                         </div>
                                     </label>
                                     <span class="filter-count">(9)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="4" id="rating4">
                                         <span class="checkmark"></span>
                                         <div class="rating-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
                                         </div>
                                     </label>
                                     <span class="filter-count">(8)</span>
                                 </li>
                                 <li>
                                     <label class="filter-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="3" id="rating3">
                                         <span class="checkmark"></span>
                                         <div class="rating-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
                                         </div>
                                     </label>
                                     <span class="filter-count">(5)</span>
@@ -316,8 +346,8 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary apply-filters">Apply Filters</button>
-                    <button class="btn btn-outline reset-filters">Reset Filters</button>
+                    <button class="btn btn-primary apply-filters" id="applyFilters">Apply Filters</button>
+                    <button class="btn btn-outline reset-filters" id="resetFilters">Reset Filters</button>
                 </aside>
 
                 <!-- Main Products Grid -->
@@ -325,18 +355,18 @@
                     <!-- Products Sorting -->
                     <div class="products-sorting">
                         <div class="sorting-left">
-                            <p>Showing <span>1-24</span> of <span>24</span> products</p>
+                            <p>Showing <span id="showingStart">1</span>-<span id="showingEnd">24</span> of <span id="totalProducts">24</span> products</p>
                         </div>
                         <div class="sorting-right">
                             <div class="sort-by">
                                 <label>Sort by:</label>
-                                <select>
-                                    <option>Default</option>
-                                    <option>Price: Low to High</option>
-                                    <option>Price: High to Low</option>
-                                    <option>Most Popular</option>
-                                    <option>Highest Rating</option>
-                                    <option>Newest</option>
+                                <select id="sortSelect">
+                                    <option value="default">Default</option>
+                                    <option value="price_asc">Price: Low to High</option>
+                                    <option value="price_desc">Price: High to Low</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="rating">Highest Rating</option>
+                                    <option value="newest">Newest</option>
                                 </select>
                             </div>
                             <div class="view-mode">
@@ -348,755 +378,12 @@
 
                     <!-- Products Grid -->
                     <div class="products-grid" id="productsGrid">
-                        <!-- Product 1 -->
-                        <a href="../products/gas-cylinder-products/heavy-duty-gas-cylinder-50kg.html" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge best-seller">Best Seller</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/gas1.jpg" alt="Industrial Gas Cylinder">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">LPG Cylinders</p>
-                                <h3 class="product-title">Heavy Duty Gas Cylinder - 50kg</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 299,999</span>
-                                    <span class="old-price">UGX 349,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(24)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 2 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge new">New</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Gas cylinder LPG bottle regulator.jpg" alt="Gas Regulator">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Accessories</p>
-                                <h3 class="product-title">Premium Gas Pressure Regulator</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 49,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(18)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 3 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/gas4.jpg" alt="Portable Gas Stove">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Cooking Equipment</p>
-                                <h3 class="product-title">Portable Gas Stove with Cylinder</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 89,999</span>
-                                    <span class="old-price">UGX 109,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(42)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 4 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge discount">-15%</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/CEM Gas Leak Detector Pro in Tools & Hardware _ Hand Tools _ Measuring & Levels.jpg" alt="Gas Detector">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Safety Equipment</p>
-                                <h3 class="product-title">Digital Gas Leak Detector</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 59,999</span>
-                                    <span class="old-price">UGX 79,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(31)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 5 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Portable Oxygen Cylinder For Rent In Bangalore.jpg" alt="Oxygen Cylinder">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Oxygen Cylinders</p>
-                                <h3 class="product-title">Medical Oxygen Cylinder - 10L</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 199,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(15)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 6 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Gas Cylinder Trolley.jpg" alt="Gas Cylinder Cart">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Accessories</p>
-                                <h3 class="product-title">Heavy Duty Cylinder Transport Cart</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 129,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(12)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 7 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge new">New</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/camping gas kit.jpg" alt="Camping Gas Kit">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Outdoor</p>
-                                <h3 class="product-title">Camping Gas Kit with 5kg Cylinder</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 149,999</span>
-                                    <span class="old-price">UGX 179,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(27)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 8 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Pigtail Hose Pipe.jpg" alt="Gas Hose">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Accessories</p>
-                                <h3 class="product-title">High Pressure Gas Hose - 2m</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 29,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(8)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 9 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge best-seller">Best Seller</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/Oryx Gas 13kg Cylinder + Regulator + Hosepipe.jpg" alt="Industrial Gas Cylinder">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">LPG Cylinders</p>
-                                <h3 class="product-title">Standard Gas Cylinder - 13kg</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 99,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(36)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 10 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Burner  aluminum gas cover.jpg" alt="Gas Burner">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Cooking Equipment</p>
-                                <h3 class="product-title">Commercial Gas Burner</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 79,999</span>
-                                    <span class="old-price">UGX 89,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(19)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 11 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge discount">-20%</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Butane Grill Stove, Portable Camping Grill Gas Stove, Portable Butane Gas Stove.jpg" alt="Gas Grill">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Outdoor</p>
-                                <h3 class="product-title">Portable Gas Grill</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 119,999</span>
-                                    <span class="old-price">UGX 149,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(14)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 12 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gas Heater">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Heating</p>
-                                <h3 class="product-title">Indoor Gas Heater</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 159,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(11)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 13 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge new">New</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/6kg Gas Cylinder.jpg" alt="Gas Cylinder">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">LPG Cylinders</p>
-                                <h3 class="product-title">Eco-Friendly Gas Cylinder - 6kg</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 69,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(7)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 14 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Universal Adapter Quickly Attach System For Camp Stove Grills And Cookers.jpg" alt="Gas Adapter">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Accessories</p>
-                                <h3 class="product-title">Universal Gas Adapter</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 19,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(5)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 15 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge best-seller">Best Seller</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Professional Propane Range in Stainless Steel, LRG3601ULP - 36 _ Stainless Steel.jpg" alt="Gas Oven">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Cooking Equipment</p>
-                                <h3 class="product-title">Professional Gas Oven</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 249,999</span>
-                                    <span class="old-price">UGX 299,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(28)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 16 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/gas-safety-gear/industrial face mask.jpg" alt="Gas Mask">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Safety Equipment</p>
-                                <h3 class="product-title">Industrial Gas Mask</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 89,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(13)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 17 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge discount">-10%</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/cooking gas 8.jpg" alt="Gas Cylinder">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">LPG Cylinders</p>
-                                <h3 class="product-title">Standard Gas Cylinder - 25kg</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 179,999</span>
-                                    <span class="old-price">UGX 199,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(21)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 18 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/gas valve (1).jpg" alt="Gas Valve">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Accessories</p>
-                                <h3 class="product-title">Safety Gas Valve</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 24,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(9)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 19 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge new">New</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Stove 4 Burner Gas Cooker Inox Stainless Steel Bulit In Hobs.jpg" alt="Gas Cooker">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Cooking Equipment</p>
-                                <h3 class="product-title">4-Burner Gas Cooker</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 199,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(17)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 20 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Gas Leak alarm Wifi Home Gas Alarm Tuya App Monitor Mini Gas Detector Home.jpg" alt="Gas Alarm">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Safety Equipment</p>
-                                <h3 class="product-title">Smart Gas Leak Alarm</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 69,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(8)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 21 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/cooking gas 7.jpg" alt="Gas Cylinder">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">LPG Cylinders</p>
-                                <h3 class="product-title">Compact Gas Cylinder - 3kg</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 49,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(6)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 22 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge discount">-15%</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/gas connector.jpg" alt="Gas Connector">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Accessories</p>
-                                <h3 class="product-title">Flexible Gas Connector</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 34,999</span>
-                                    <span class="old-price">UGX 39,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="rating-count">(11)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 23 -->
-                        <a href="" class="product-card">
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/Natural and LP Gas Commercial Gas Water Heater, 100 gal_, 120V AC.jpg" alt = "Gas Water Heater">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Heating</p>
-                                <h3 class="product-title">Instant Gas Water Heater</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 229,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(10)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
-
-                        <!-- Product 24 -->
-                        <a href="" class="product-card">
-                            <div class="product-badges">
-                                <span class="product-badge best-seller">Best Seller</span>
-                            </div>
-                            <div class="product-img">
-                                <img src="../assets/images/accessories/safety kit.jpg" alt="Gas Safety Kit">
-                                <div class="product-actions">
-                                    <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
-                                    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-category">Safety Equipment</p>
-                                <h3 class="product-title">Complete Gas Safety Kit</h3>
-                                <div class="product-price">
-                                    <span class="current-price">UGX 129,999</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="rating-count">(23)</span>
-                                </div>
-                                <button class="add-to-cart">Add to Cart</button>
-                            </div>
-                        </a>
+                        <!-- Products will be dynamically injected -->
                     </div>
 
                     <!-- Pagination -->
-                    <div class="pagination">
-                        <button class="page-btn disabled"><i class="fas fa-chevron-left"></i></button>
-                        <button class="page-btn active">1</button>
-                        <button class="page-btn">2</button>
-                        <button class="page-btn">3</button>
-                        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be dynamically injected -->
                     </div>
                 </div>
             </div>
@@ -1123,56 +410,37 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../products/index.html">Products</a></li>
+                        <li><a href="../services/index.html">Services</a></li>
+                        <li><a href="../about/index.html">About Us</a></li>
+                        <li><a href="../contact/index.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Products</h3>
                     <ul>
-                        <li><a href="products.html#lpg">LPG Cylinders</a></li>
-                        <li><a href="products.html#oxygen">Oxygen Cylinders</a></li>
-                        <li><a href="products.html#accessories">Gas Accessories</a></li>
-                        <li><a href="products.html#safety">Safety Equipment</a></li>
-                        <li><a href="products.html#industrial">Industrial Solutions</a></li>
+                        <li><a href="#lpg">LPG Cylinders</a></li>
+                        <li><a href="#oxygen">Oxygen Cylinders</a></li>
+                        <li><a href="#accessories">Gas Accessories</a></li>
+                        <li><a href="#safety">Safety Equipment</a></li>
+                        <li><a href="#industrial">Industrial Solutions</a></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-contact">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kasana Luwero near MC Petro Station at the mast</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <a href="tel:0788971271">0788971271</a>
-                                <a href="tel:0776511012">0776511012</a>
-                                <a href="tel:0707461309">0707461309</a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Kasana Luwero near MC Petro Station at the mast</span></li>
+                        <li><i class="fas fa-phone"></i><div><a href="tel:0788971271">0788971271</a> <a href="tel:0776511012">0776511012</a> <a href="tel:0707461309">0707461309</a></div></li>
+                        <li><i class="fas fa-envelope"></i><a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a></li>
+                        <li><i class="fas fa-clock"></i><span>Mon-Sat: 8:00 AM - 6:00 PM</span></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2023 RonVick Gas Service Limited. All Rights Reserved.</p>
-                    <div class="footer-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
+                    <p>&copy; 2026 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
                 </div>
             </div>
         </div>
@@ -1180,39 +448,96 @@
 
     <!-- Mobile Bottom Nav -->
     <div class="mobile-bottom-nav">
-        <a href="../index.html" class="mobile-nav-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="../products/index.html" class="mobile-nav-item active">
-            <i class="fas fa-shopping-bag"></i>
-            <span>Products</span>
-        </a>
-        <a href="tel:0788971271" class="mobile-nav-item">
-            <i class="fas fa-phone"></i>
-            <span>Call Us</span>
-        </a>
-        <a href="../signup.html" class="mobile-nav-item">
-            <i class="fas fa-user"></i>
-            <span>SignUp</span>
-        </a>
-        <a href="../cart/index.html" class="mobile-nav-item cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-            <span class="cart-count">0</span>
-        </a>
+        <a href="../index.html" class="mobile-nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="../products/index.html" class="mobile-nav-item active"><i class="fas fa-shopping-bag"></i><span>Products</span></a>
+        <a href="tel:0788971271" class="mobile-nav-item"><i class="fas fa-phone"></i><span>Call Us</span></a>
+        <a href="#" class="mobile-nav-item" id="mobileUserIcon"><i class="fas fa-user"></i><span>Account</span></a>
+        <a href="../cart/index.html" class="mobile-nav-item cart-icon"><i class="fas fa-shopping-cart"></i><span>Cart</span><span class="cart-count">0</span></a>
     </div>
 
     <!-- Quick View Modal -->
     <div class="modal quick-view-modal" id="quickViewModal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
-            <div class="quick-view-content">
-                <!-- Content will be loaded via JavaScript -->
+            <div class="quick-view-content"></div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content auth-modal-content">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            <div class="auth-header">
+                <h2>Welcome to RonVick Gas</h2>
+                <p>Sign in to your account or create one to enjoy personalised services</p>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Login</button>
+                <button class="auth-tab" id="signupTab">Create Account</button>
+            </div>
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="auth-divider">
+                        <span>or continue with</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </form>
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <small>At least 8 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="terms">
+                            <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    <div class="auth-divider">
+                        <span>or sign up with</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <script src="../assets/js/products/products.js"></script>
+    <script src="../assets/js/products/index.js"></script>
 </body>
 </html>

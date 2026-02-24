@@ -6,7 +6,7 @@
     <title>Gas Cylinders - Complete Range | RonVick Gas Service Limited</title>
     <meta name="description" content="Shop high-quality gas cylinders in all sizes (6kg, 13kg, 25kg, 50kg) from top brands - Shell, Oryx, Total, Stabex, Hass, Hashi, Mogas, Meru. Free delivery in Kasana Luwero.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/css/products/gas-cylinders/index.css">
+    <link rel="stylesheet" href="../../assets/css/products/gas-cylinders/gas-cylinders.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,11 +27,6 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="user-info">
-                    <span id="userDisplay"></span>
-                    <button id="logoutBtn" style="display:none;">Logout</button>
-                    <a href="#" id="loginLink">Login</a>
-                </div>
             </div>
         </div>
     </div>
@@ -48,6 +43,7 @@
                 <div class="nav-links" id="navLinks">
                     <a href="../../index.html">Home</a>
                     <a href="../../products/index.html" class="active">Products</a>
+                    <!-- <a href="../gas-cylinders.html" class="active">Gas Cylinders</a> -->
                     <a href="../../services.html">Services</a>
                     <a href="../../about.html">About</a>
                     <a href="../../contact.html">Contact</a>
@@ -59,23 +55,10 @@
                 </div>
                 
                 <div class="nav-icons">
-                    <!-- User Icon with Dropdown -->
-                    <div class="user-dropdown-container">
-                        <a href="#" class="user-icon" id="userIcon">
-                            <i class="fas fa-user-circle"></i>
-                        </a>
-                        <div class="user-dropdown" id="userDropdown">
-                            <div class="dropdown-header" id="dropdownHeader">Account</div>
-                            <a href="../../account/index.html" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
-                            <a href="../../account/orders.html" class="dropdown-item"><i class="fas fa-box"></i> Orders</a>
-                            <a href="#" class="dropdown-item" id="dropdownLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </div>
-                    </div>
-                    <!-- Cart Icon -->
-                    <a href="../../cart/index.html" class="cart-icon">
+                    <div class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
-                    </a>
+                    </div>
                     <div class="hamburger" id="hamburger">
                         <div class="bar"></div>
                         <div class="bar"></div>
@@ -182,57 +165,63 @@
                                 <div class="brand-search">
                                     <input type="text" id="brandSearch" placeholder="Search brands...">
                                 </div>
-                                <div class="brand-list" id="brandFilter">
+                                <div class="brand-list">
                                     <label class="brand-option">
                                         <input type="checkbox" class="brand-checkbox" value="all" checked>
                                         <span class="brand-name">All Brands</span>
                                         <span class="brand-count">(32)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Shell">
+                                        <input type="checkbox" class="brand-checkbox" value="shell">
                                         <img src="../../assets/images/shell logo.jpg" alt="Shell" class="brand-logo">
                                         <span class="brand-name">Shell</span>
                                         <span class="brand-count">(8)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Total">
+                                        <input type="checkbox" class="brand-checkbox" value="total">
                                         <img src="../../assets/images/total logo.jpg" alt="Total" class="brand-logo">
                                         <span class="brand-name">Total</span>
                                         <span class="brand-count">(6)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Oryx">
+                                        <input type="checkbox" class="brand-checkbox" value="oryx">
                                         <img src="../../assets/images/oryx energyies logo.jpg" alt="Oryx" class="brand-logo">
+                                        <!-- <div class="brand-logo-text">ORYX</div> -->
                                         <span class="brand-name">Oryx</span>
                                         <span class="brand-count">(5)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Stabex">
+                                        <input type="checkbox" class="brand-checkbox" value="stabex">
                                         <img src="../../assets/images/stabex logo.png" alt="Stabex" class="brand-logo">
+                                        <!-- <div class="brand-logo-text">STABEX</div> -->
                                         <span class="brand-name">Stabex</span>
                                         <span class="brand-count">(4)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Hass">
+                                        <input type="checkbox" class="brand-checkbox" value="hass">
                                         <img src="../../assets/images/hass logo.jpg" alt="Hass" class="brand-logo">
+                                       <!--  <div class="brand-logo-text">HASS</div> -->
                                         <span class="brand-name">Hass</span>
                                         <span class="brand-count">(3)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Hashi">
+                                        <input type="checkbox" class="brand-checkbox" value="hashi">
                                         <img src="../../assets/images/hashi logo.png" alt="Hashi" class="brand-logo">
+                                        <!-- <div class="brand-logo-text">HASHI</div> -->
                                         <span class="brand-name">Hashi</span>
                                         <span class="brand-count">(2)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Mogas">
+                                        <input type="checkbox" class="brand-checkbox" value="mogas">
                                         <img src="../../assets/images/mogas logo.jpg" alt="Mogas" class="brand-logo">
+                                        <!-- <div class="brand-logo-text">MOGAS</div> -->
                                         <span class="brand-name">Mogas</span>
                                         <span class="brand-count">(2)</span>
                                     </label>
                                     <label class="brand-option">
-                                        <input type="checkbox" class="brand-checkbox" value="Meru">
+                                        <input type="checkbox" class="brand-checkbox" value="meru">
                                         <img src="../../assets/images/meru logo.png" alt="Meru" class="brand-logo">
+                                        <!-- <div class="brand-logo-text">MERU</div> -->
                                         <span class="brand-name">Meru</span>
                                         <span class="brand-count">(2)</span>
                                     </label>
@@ -265,29 +254,29 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Cylinder Type</h4>
                         <div class="filter-content">
-                            <div class="type-filters" id="typeFilter">
+                            <div class="type-filters">
                                 <label class="type-option">
                                     <input type="checkbox" class="type-checkbox" value="all" checked>
                                     <span class="type-name">All Types</span>
                                 </label>
                                 <label class="type-option">
-                                    <input type="checkbox" class="type-checkbox" value="LPG (Cooking Gas)">
+                                    <input type="checkbox" class="type-checkbox" value="lpg">
                                     <span class="type-name">LPG (Cooking Gas)</span>
                                 </label>
                                 <label class="type-option">
-                                    <input type="checkbox" class="type-checkbox" value="Oxygen">
+                                    <input type="checkbox" class="type-checkbox" value="oxygen">
                                     <span class="type-name">Oxygen</span>
                                 </label>
                                 <label class="type-option">
-                                    <input type="checkbox" class="type-checkbox" value="Industrial Gas">
+                                    <input type="checkbox" class="type-checkbox" value="industrial">
                                     <span class="type-name">Industrial Gas</span>
                                 </label>
                                 <label class="type-option">
-                                    <input type="checkbox" class="type-checkbox" value="Refillable">
+                                    <input type="checkbox" class="type-checkbox" value="refillable">
                                     <span class="type-name">Refillable</span>
                                 </label>
                                 <label class="type-option">
-                                    <input type="checkbox" class="type-checkbox" value="Disposable">
+                                    <input type="checkbox" class="type-checkbox" value="disposable">
                                     <span class="type-name">Disposable</span>
                                 </label>
                             </div>
@@ -298,21 +287,21 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Certification</h4>
                         <div class="filter-content">
-                            <div class="certification-filters" id="certificationFilter">
+                            <div class="certification-filters">
                                 <label class="certification-option">
                                     <input type="checkbox" class="certification-checkbox" value="all" checked>
                                     <span class="certification-name">All</span>
                                 </label>
                                 <label class="certification-option">
-                                    <input type="checkbox" class="certification-checkbox" value="UN Certified">
+                                    <input type="checkbox" class="certification-checkbox" value="uncertified">
                                     <span class="certification-name">UN Certified</span>
                                 </label>
                                 <label class="certification-option">
-                                    <input type="checkbox" class="certification-checkbox" value="ISO Certified">
+                                    <input type="checkbox" class="certification-checkbox" value="iso">
                                     <span class="certification-name">ISO Certified</span>
                                 </label>
                                 <label class="certification-option">
-                                    <input type="checkbox" class="certification-checkbox" value="Safety Tested">
+                                    <input type="checkbox" class="certification-checkbox" value="safety">
                                     <span class="certification-name">Safety Tested</span>
                                 </label>
                             </div>
@@ -323,7 +312,7 @@
                     <div class="filter-section">
                         <h4 class="filter-title">Availability</h4>
                         <div class="filter-content">
-                            <div class="availability-filters" id="availabilityFilter">
+                            <div class="availability-filters">
                                 <label class="availability-option">
                                     <input type="checkbox" class="availability-checkbox" value="all" checked>
                                     <span class="availability-name">All</span>
@@ -354,7 +343,7 @@
                     <!-- Products Sorting -->
                     <div class="products-sorting">
                         <div class="sorting-left">
-                            <p>Showing <span id="showingStart">1</span>-<span id="showingEnd">12</span> of <span id="totalCount">32</span> cylinders</p>
+                            <p>Showing <span id="showingCount">1-24</span> of <span id="totalCount">32</span> cylinders</p>
                             <div class="active-filters" id="activeFilters">
                                 <!-- Active filters will appear here -->
                             </div>
@@ -364,11 +353,11 @@
                                 <label>Sort by:</label>
                                 <select id="sortSelect">
                                     <option value="default">Default</option>
-                                    <option value="price_asc">Price: Low to High</option>
-                                    <option value="price_desc">Price: High to Low</option>
-                                    <option value="name_asc">Name: A to Z</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="name">Name: A to Z</option>
                                     <option value="popular">Most Popular</option>
-                                    <option value="newest">Newest First</option>
+                                    <option value="new">Newest First</option>
                                 </select>
                             </div>
                             <div class="view-mode">
@@ -536,11 +525,11 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../products/index.html">Products</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../products/index.html">Products</a></li>
                         <li><a href="gas-cylinders.html" class="active">Gas Cylinders</a></li>
-                        <li><a href="../../services.html">Services</a></li>
-                        <li><a href="../../about.html">About Us</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="../about.html">About Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -600,13 +589,13 @@
             <i class="fas fa-shopping-bag"></i>
             <span>Products</span>
         </a>
-        <a href="tel:0788971271" class="mobile-nav-item">
+        <a href="../../index.html" class="mobile-nav-item">
             <i class="fas fa-phone"></i>
             <span>Call Us</span>
         </a>
-        <a href="#" class="mobile-nav-item" id="mobileUserIcon">
+        <a href="../../signup.html" class="mobile-nav-item">
             <i class="fas fa-user"></i>
-            <span>Account</span>
+            <span>SignUp</span>
         </a>
         <a href="../../cart/index.html" class="mobile-nav-item cart-icon">
             <i class="fas fa-shopping-cart"></i>
@@ -641,83 +630,8 @@
         </div>
     </div>
 
-    <!-- Auth Modal -->
-    <div class="modal" id="authModal">
-        <div class="modal-content auth-modal-content">
-            <button class="modal-close" id="closeAuthModal">&times;</button>
-            <div class="auth-header">
-                <h2>Welcome to RonVick Gas</h2>
-                <p>Sign in to your account or create one to enjoy personalised services</p>
-            </div>
-            <div class="auth-tabs">
-                <button class="auth-tab active" id="loginTab">Login</button>
-                <button class="auth-tab" id="signupTab">Create Account</button>
-            </div>
-            <div class="auth-forms">
-                <!-- Login Form -->
-                <form id="loginForm" class="auth-form active">
-                    <div class="form-group">
-                        <label for="loginEmail">Email Address</label>
-                        <input type="email" id="loginEmail" placeholder="you@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" placeholder="••••••••" required>
-                    </div>
-                    <div class="form-options">
-                        <label class="remember-me">
-                            <input type="checkbox"> Remember me
-                        </label>
-                        <a href="#" class="forgot-password">Forgot password?</a>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                    <div class="auth-divider">
-                        <span>or continue with</span>
-                    </div>
-                    <div class="social-login">
-                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
-                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-                    </div>
-                </form>
-                <!-- Signup Form -->
-                <form id="signupForm" class="auth-form">
-                    <div class="form-group">
-                        <label for="signupName">Full Name</label>
-                        <input type="text" id="signupName" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupEmail">Email Address</label>
-                        <input type="email" id="signupEmail" placeholder="you@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword" placeholder="Create a password" required>
-                        <small>At least 8 characters</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupConfirmPassword">Confirm Password</label>
-                        <input type="password" id="signupConfirmPassword" placeholder="Confirm password" required>
-                    </div>
-                    <div class="form-options">
-                        <label class="terms">
-                            <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-                    <div class="auth-divider">
-                        <span>or sign up with</span>
-                    </div>
-                    <div class="social-login">
-                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
-                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
-    <script src="../../assets/js/products/gas-cylinders/index.js"></script>
+    <script src="../../assets/js/gas-cylinders.js"></script>
 </body>
 </html>
