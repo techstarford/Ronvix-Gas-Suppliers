@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Cylinder Refill | RonVick Gas Service Limited</title>
+    <meta name="description" content="Quick and affordable gas cylinder refill services in Kasana Luwero. Choose from 6kg, 12kg, 25kg, and 50kg refills with free delivery.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== BASE STYLES (copied from index.css) ========== */
+        :root {
+            --primary-color: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --gray-color: #95a5a6;
+            --dark-gray: #7f8c8d;
+            --light-gray: #bdc3c7;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --white: #ffffff;
+            --black: #000000;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .section-header p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+        }
+
+        .contact-info i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: 1rem;
+        }
+
+        #userDisplay {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        #logoutBtn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        #logoutBtn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #loginLink {
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        #loginLink:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* ========== USER DROPDOWN ========== */
+        .user-dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--dark-color);
+            font-size: 28px;
+            transition: var(--transition);
+        }
+
+        .user-icon:hover {
+            color: var(--primary-color);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            min-width: 200px;
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .user-dropdown.active {
+            display: block;
+        }
+
+        .dropdown-header {
+            padding: 15px;
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: #555;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .dropdown-item:hover {
+            background: #f5f5f5;
+            color: var(--primary-color);
+        }
+
+        /* ========== CART ICON ========== */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon i {
+            font-size: 24px;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover i {
+            color: var(--primary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ========== HAMBURGER ========== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        /* ========== HERO SECTION (refill specific) ========== */
+        .hero-refill {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../assets/images/cooking\ gas\ 8.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-refill-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-refill h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-refill p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* ========== FEATURES (unchanged) ========== */
+        .features {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        /* ========== REFILL PRODUCTS GRID ========== */
+        .refill-products {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .product-badges {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .product-badge {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .product-badge.new {
+            background-color: var(--success-color);
+        }
+
+        .product-badge.best-seller {
+            background-color: var(--primary-color);
+        }
+
+        .product-badge.discount {
+            background-color: var(--warning-color);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .quick-view,
+        .add-to-wishlist {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-view:hover,
+        .add-to-wishlist:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .add-to-wishlist.active {
+            color: var(--primary-color);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--gray-color);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .old-price {
+            font-size: 14px;
+            color: var(--gray-color);
+            text-decoration: line-through;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .product-rating .stars {
+            color: var(--warning-color);
+        }
+
+        .product-rating .stars i {
+            font-size: 11px;
+        }
+
+        .rating-count {
+            font-size: 11px;
+            color: var(--gray-color);
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .section-footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta {
+            padding: 60px 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 60px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-about .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-about .footer-logo i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact ul li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .footer-contact ul li i {
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        .footer-contact ul li a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-contact ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            background-color: #111;
+            padding: 20px 0;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ========== MOBILE BOTTOM NAV ========== */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            color: var(--dark-color);
+            font-size: 12px;
+            position: relative;
+        }
+
+        .mobile-nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-nav-item.cart-icon .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 30%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* ========== MODALS ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #f1f1f1;
+            color: #333;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Quick View Modal */
+        .quick-view-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .quick-view-img {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quick-view-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quick-view-info h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .quick-view-price {
+            font-size: 22px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .quick-view-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quick-view-rating .stars {
+            color: var(--warning-color);
+        }
+
+        .quick-view-rating .reviews {
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .quick-view-description {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .quick-view-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .quick-view-meta {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+
+        .quick-view-meta span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Auth Modal */
+        .auth-modal-content {
+            max-width: 450px;
+            padding: 30px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-header h2 {
+            color: var(--dark-color);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .auth-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .auth-tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .auth-forms {
+            margin-bottom: 10px;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .remember-me, .terms {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #555;
+        }
+
+        .terms a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .auth-divider {
+            position: relative;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #eee;
+            z-index: 1;
+        }
+
+        .auth-divider span {
+            position: relative;
+            background: #fff;
+            padding: 0 15px;
+            color: #999;
+            font-size: 14px;
+            z-index: 2;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .social-btn.google:hover {
+            background: #f1f1f1;
+            border-color: #999;
+        }
+
+        .social-btn.facebook {
+            background: #4267B2;
+            border-color: #4267B2;
+            color: #fff;
+        }
+
+        .social-btn.facebook:hover {
+            background: #365899;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                margin: 15px 0;
+                font-size: 18px;
+            }
+            .mobile-contact {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 30px;
+            }
+            .mobile-contact a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--primary-color);
+                font-weight: 500;
+            }
+            .mobile-bottom-nav {
+                display: flex;
+            }
+            .quick-view-content {
+                grid-template-columns: 1fr;
+            }
+            .hero-refill h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-refill {
+                height: 300px;
+            }
+            .hero-refill h1 {
+                font-size: 28px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone-alt"></i> 0788971271</span>
+                    <span><i class="fas fa-phone-alt"></i> 0776511012</span>
+                    <span><i class="fas fa-phone-alt"></i> 0707461309</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="user-info">
+                    <span id="userDisplay"></span>
+                    <button id="logoutBtn" style="display:none;">Logout</button>
+                    <a href="#" id="loginLink">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header (with adjusted relative paths) -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-fire"></i>
+                    <span>RonVick Gas</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../index.html" class="active">Products</a>
+                    <a href="../../services/index.html">Services</a>
+                    <a href="../../about/index.html">About</a>
+                    <a href="../../contact/index.html">Contact</a>
+                    <div class="mobile-contact">
+                        <a href="tel:0788971271"><i class="fas fa-phone"></i> 0788971271</a>
+                        <a href="tel:0776511012"><i class="fas fa-phone"></i> 0776511012</a>
+                        <a href="tel:0707461309"><i class="fas fa-phone"></i> 0707461309</a>
+                    </div>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="user-dropdown-container">
+                        <a href="#" class="user-icon" id="userIcon">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="dropdown-header" id="dropdownHeader">Account</div>
+                            <a href="../../account/index.html" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                            <a href="../../orders/index.html" class="dropdown-item"><i class="fas fa-box"></i> Orders</a>
+                            <a href="#" class="dropdown-item" id="dropdownLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    <a href="../cart/index.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="hamburger" id="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (refill specific) -->
+    <section class="hero-refill">
+        <div class="container">
+            <div class="hero-refill-content">
+                <h1>Gas Cylinder Refill</h1>
+                <p>Fast, safe, and affordable refills for all cylinder sizes. Free delivery in Kasana Luwero.</p>
+                <a href="#refill-products" class="btn btn-primary">View Refill Options</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (optional, kept for consistency) -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Free Delivery</h3>
+                    <p>Free refill delivery within Kasana Luwero</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Safety Checked</h3>
+                    <p>All cylinders are inspected before refill</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Same-Day Service</h3>
+                    <p>Order before 2pm for same-day refill</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive rates on all refill sizes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refill Products Grid -->
+    <section class="refill-products" id="refill-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Refill Size</h2>
+                <p>Select the cylinder size you need refilled – we'll deliver it to your doorstep.</p>
+            </div>
+            <div class="products-grid" id="refillProductsGrid">
+                <!-- Products will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Need a Refill Urgently?</h2>
+            <p>Call us now or order online for quick delivery within Kasana Luwero.</p>
+            <div class="cta-buttons">
+                <a href="tel:0788971271" class="btn btn-primary cta-btn"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="../../contact/index.html" class="btn btn-outline cta-btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (with adjusted relative paths) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo"><i class="fas fa-fire"></i><span>RonVick Gas</span></div>
+                    <p>Your trusted provider of high-quality gas cylinders and accessories in Kasana Luwero since 2010.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../index.html">Products</a></li>
+                        <li><a href="../../services/index.html">Services</a></li>
+                        <li><a href="../../about/index.html">About Us</a></li>
+                        <li><a href="../../contact/index.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="../index.html#lpg">LPG Cylinders</a></li>
+                        <li><a href="../index.html#oxygen">Oxygen Cylinders</a></li>
+                        <li><a href="../index.html#accessories">Gas Accessories</a></li>
+                        <li><a href="../index.html#safety">Safety Equipment</a></li>
+                        <li><a href="../index.html#industrial">Industrial Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Kasana Luwero near MC Petro Station at the mast</span></li>
+                        <li><i class="fas fa-phone"></i><div><a href="tel:0788971271">0788971271</a> <a href="tel:0776511012">0776511012</a> <a href="tel:0707461309">0707461309</a></div></li>
+                        <li><i class="fas fa-envelope"></i><a href="mailto:info@ronvickgas.com">info@ronvickgas.com</a></li>
+                        <li><i class="fas fa-clock"></i><span>Mon-Sat: 8:00 AM - 6:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 RonVick Gas Service Limited. All Rights Reserved.</p>
+                    <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Nav (adjusted paths) -->
+    <div class="mobile-bottom-nav">
+        <a href="../../index.html" class="mobile-nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="../index.html" class="mobile-nav-item active"><i class="fas fa-shopping-bag"></i><span>Products</span></a>
+        <a href="tel:0788971271" class="mobile-nav-item"><i class="fas fa-phone"></i><span>Call Us</span></a>
+        <a href="#" class="mobile-nav-item" id="mobileUserIcon"><i class="fas fa-user"></i><span>Account</span></a>
+        <a href="../cart/index.html" class="mobile-nav-item cart-icon"><i class="fas fa-shopping-cart"></i><span>Cart</span><span class="cart-count">0</span></a>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal quick-view-modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="quick-view-content"></div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content auth-modal-content">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            <div class="auth-header">
+                <h2>Welcome to RonVick Gas</h2>
+                <p>Sign in to your account or create one</p>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Login</button>
+                <button class="auth-tab" id="signupTab">Create Account</button>
+            </div>
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="auth-divider">
+                        <span>or continue with</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </form>
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="Macford Isaiah" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <small>At least 8 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="terms">
+                            <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    <div class="auth-divider">
+                        <span>or sign up with</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                        <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core JavaScript (from index.js, slightly adapted for paths but logic unchanged) -->
+    <script>
+        /**
+         * RonVick Gas - Core JavaScript (copied from index.js with minor path adjustments)
+         */
+        (function() {
+            // ========== CART MANAGEMENT ==========
+            const CART_STORAGE_KEY = 'ronvick_cart';
+
+            function getCart() {
+                const cart = localStorage.getItem(CART_STORAGE_KEY);
+                return cart ? JSON.parse(cart) : [];
+            }
+
+            function saveCart(cart) {
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+                updateCartCount();
+            }
+
+            function addToCart(product) {
+                const cart = getCart();
+                const existing = cart.find(item => item.id === product.id);
+                if (existing) {
+                    existing.quantity += product.quantity || 1;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: product.quantity || 1
+                    });
+                }
+                saveCart(cart);
+            }
+
+            function updateCartCount() {
+                const cart = getCart();
+                const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+                document.querySelectorAll('.cart-count').forEach(el => {
+                    el.textContent = total;
+                });
+            }
+
+            // ========== AUTH MANAGEMENT ==========
+            const AUTH_TOKEN_KEY = 'authToken';
+            const AUTH_USER_KEY = 'authUser';
+
+            function isLoggedIn() {
+                return !!localStorage.getItem(AUTH_TOKEN_KEY);
+            }
+
+            function getUser() {
+                const userStr = localStorage.getItem(AUTH_USER_KEY);
+                return userStr ? JSON.parse(userStr) : null;
+            }
+
+            function login(email, password) {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const user = { name: email.split('@')[0], email: email };
+                        localStorage.setItem(AUTH_TOKEN_KEY, 'fake-jwt-token');
+                        localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+                        updateAuthUI();
+                        resolve({ success: true, user });
+                    }, 500);
+                });
+            }
+
+            function signup(name, email, password) {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const user = { name: name, email: email };
+                        localStorage.setItem(AUTH_TOKEN_KEY, 'fake-jwt-token');
+                        localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+                        updateAuthUI();
+                        resolve({ success: true, user });
+                    }, 500);
+                });
+            }
+
+            function logout() {
+                localStorage.removeItem(AUTH_TOKEN_KEY);
+                localStorage.removeItem(AUTH_USER_KEY);
+                updateAuthUI();
+            }
+
+            function updateAuthUI() {
+                const loggedIn = isLoggedIn();
+                const user = getUser();
+                const userDisplay = document.getElementById('userDisplay');
+                const logoutBtn = document.getElementById('logoutBtn');
+                const loginLink = document.getElementById('loginLink');
+                const dropdownHeader = document.getElementById('dropdownHeader');
+                const userIcon = document.getElementById('userIcon');
+
+                if (loggedIn && user) {
+                    if (userDisplay) userDisplay.textContent = `Hi, ${user.name.split(' ')[0]}`;
+                    if (logoutBtn) logoutBtn.style.display = 'inline-block';
+                    if (loginLink) loginLink.style.display = 'none';
+                    if (dropdownHeader) dropdownHeader.textContent = user.name;
+                    if (userIcon) userIcon.innerHTML = '<i class="fas fa-user-circle"></i>';
+                } else {
+                    if (userDisplay) userDisplay.textContent = '';
+                    if (logoutBtn) logoutBtn.style.display = 'none';
+                    if (loginLink) loginLink.style.display = 'inline-block';
+                    if (dropdownHeader) dropdownHeader.textContent = 'Account';
+                    if (userIcon) userIcon.innerHTML = '<i class="fas fa-user-circle"></i>';
+                }
+            }
+
+            // ========== MOBILE NAV ==========
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger?.classList.remove('active');
+                    navLinks?.classList.remove('active');
+                });
+            });
+
+            // ========== USER DROPDOWN ==========
+            const userIcon = document.getElementById('userIcon');
+            const userDropdown = document.getElementById('userDropdown');
+            if (userIcon && userDropdown) {
+                userIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    userDropdown.classList.toggle('active');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!userIcon.contains(e.target) && !userDropdown.contains(e.target)) {
+                        userDropdown.classList.remove('active');
+                    }
+                });
+            }
+
+            // ========== LOGOUT ==========
+            document.getElementById('dropdownLogout')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                logout();
+                userDropdown?.classList.remove('active');
+                window.location.reload();
+            });
+            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                logout();
+                window.location.reload();
+            });
+
+            // ========== AUTH MODAL ==========
+            const authModal = document.getElementById('authModal');
+            const loginTab = document.getElementById('loginTab');
+            const signupTab = document.getElementById('signupTab');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const closeAuthModal = document.getElementById('closeAuthModal');
+
+            function openAuthModal() {
+                authModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal(modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (loginTab && signupTab) {
+                loginTab.addEventListener('click', () => {
+                    loginTab.classList.add('active');
+                    signupTab.classList.remove('active');
+                    loginForm.classList.add('active');
+                    signupForm.classList.remove('active');
+                });
+                signupTab.addEventListener('click', () => {
+                    signupTab.classList.add('active');
+                    loginTab.classList.remove('active');
+                    signupForm.classList.add('active');
+                    loginForm.classList.remove('active');
+                });
+            }
+
+            loginForm?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                const result = await login(email, password);
+                if (result.success) {
+                    closeModal(authModal);
+                } else {
+                    alert('Login failed');
+                }
+            });
+
+            signupForm?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = document.getElementById('signupName').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                const confirm = document.getElementById('signupConfirmPassword').value;
+                if (password !== confirm) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                const result = await signup(name, email, password);
+                if (result.success) {
+                    closeModal(authModal);
+                } else {
+                    alert('Signup failed');
+                }
+            });
+
+            document.getElementById('loginLink')?.addEventListener('click', e => {
+                e.preventDefault();
+                openAuthModal();
+            });
+
+            document.getElementById('mobileUserIcon')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isLoggedIn()) {
+                    openAuthModal();
+                } else {
+                    window.location.href = '../../account/index.html';
+                }
+            });
+
+            closeAuthModal?.addEventListener('click', () => closeModal(authModal));
+            window.addEventListener('click', e => {
+                if (e.target === authModal) closeModal(authModal);
+            });
+
+            // ========== QUICK VIEW FUNCTION ==========
+            function openQuickView(card) {
+                const modal = document.getElementById('quickViewModal');
+                const img = card.querySelector('.product-img img').src;
+                const title = card.querySelector('.product-title').textContent;
+                const category = card.querySelector('.product-category').textContent;
+                const currentPrice = card.querySelector('.current-price').textContent;
+                const oldPrice = card.querySelector('.old-price') ? card.querySelector('.old-price').textContent : null;
+                const rating = card.querySelector('.product-rating').innerHTML;
+                const id = card.dataset.productId;
+                const price = parseFloat(card.dataset.productPrice);
+                const image = card.dataset.productImage;
+
+                const content = `
+                    <div class="quick-view-img">
+                        <img src="${img}" alt="${title}">
+                    </div>
+                    <div class="quick-view-info">
+                        <span class="quick-view-category">${category}</span>
+                        <h2>${title}</h2>
+                        <div class="quick-view-price">
+                            ${currentPrice}
+                            ${oldPrice ? `<span class="quick-view-old-price">${oldPrice}</span>` : ''}
+                        </div>
+                        <div class="quick-view-rating">${rating}</div>
+                        <p class="quick-view-description">
+                            This premium gas product is designed for both home and industrial use, featuring the highest safety standards and durability.
+                        </p>
+                        <div class="quick-view-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn btn-primary quick-add-to-cart" data-id="${id}" data-name="${title}" data-price="${price}" data-image="${image}">Add to Cart</button>
+                        </div>
+                        <div class="quick-view-meta">
+                            <span><strong>Category:</strong> ${category}</span>
+                            <span><strong>Availability:</strong> In Stock</span>
+                            <span><strong>Delivery:</strong> Free delivery in Kasana Luwero</span>
+                        </div>
+                    </div>
+                `;
+                document.querySelector('.quick-view-content').innerHTML = content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                const minus = modal.querySelector('.minus');
+                const plus = modal.querySelector('.plus');
+                const qtyInput = modal.querySelector('.quantity-input');
+                minus?.addEventListener('click', () => {
+                    if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+                });
+                plus?.addEventListener('click', () => {
+                    qtyInput.value = parseInt(qtyInput.value) + 1;
+                });
+
+                modal.querySelector('.quick-add-to-cart').addEventListener('click', function() {
+                    const quantity = parseInt(qtyInput.value) || 1;
+                    addToCart({
+                        id: this.dataset.id,
+                        name: this.dataset.name,
+                        price: parseFloat(this.dataset.price),
+                        image: this.dataset.image,
+                        quantity: quantity
+                    });
+                    alert(`${quantity} × ${this.dataset.name} added to cart!`);
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // ========== CLOSE MODALS ==========
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            window.addEventListener('click', e => {
+                if (e.target.classList.contains('modal')) {
+                    e.target.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // ========== NEWSLETTER ==========
+            document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing!');
+                e.target.reset();
+            });
+
+            // ========== INITIAL UI UPDATE ==========
+            updateCartCount();
+            updateAuthUI();
+
+            // Expose functions globally for later use (e.g., addToCart from dynamically added buttons)
+            window.ronvick = { addToCart, openQuickView };
+        })();
+    </script>
+
+    <!-- Refill Products Data & Grid Population -->
+    <script>
+        (function() {
+            // Refill products data (images use relative path to assets from this subdirectory)
+            const refillProductsData = [
+                {
+                    id: 'refill_6kg',
+                    name: '6kg LPG Cylinder Refill',
+                    category: 'Gas Refill',
+                    price: 45000,
+                    oldPrice: null,
+                    image: '../../assets/images/cooking gas 7.jpg',
+                    rating: 4.5,
+                    reviews: 18,
+                    badge: 'best-seller'
+                },
+                {
+                    id: 'refill_12kg',
+                    name: '12kg LPG Cylinder Refill',
+                    category: 'Gas Refill',
+                    price: 75000,
+                    oldPrice: 80000,
+                    image: '../../assets/images/cooking gas 8.jpg',
+                    rating: 4,
+                    reviews: 24,
+                    badge: 'discount'
+                },
+                {
+                    id: 'refill_25kg',
+                    name: '25kg LPG Cylinder Refill',
+                    category: 'Gas Refill',
+                    price: 145000,
+                    oldPrice: null,
+                    image: '../../assets/images/gas2.jpg',
+                    rating: 5,
+                    reviews: 31,
+                    badge: null
+                },
+                {
+                    id: 'refill_50kg',
+                    name: '50kg LPG Cylinder Refill',
+                    category: 'Gas Refill',
+                    price: 280000,
+                    oldPrice: 295000,
+                    image: '../../assets/images/gas2.jpg',
+                    rating: 4.5,
+                    reviews: 42,
+                    badge: null
+                }
+            ];
+
+            const grid = document.getElementById('refillProductsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = refillProductsData.map(product => {
+                const badgeHtml = product.badge ? 
+                    `<div class="product-badges"><span class="product-badge ${product.badge}">${product.badge.replace('-', ' ')}</span></div>` : '';
+                const oldPriceHtml = product.oldPrice ? 
+                    `<span class="old-price">UGX ${product.oldPrice.toLocaleString()}</span>` : '';
+                const ratingStars = Array(5).fill(0).map((_, i) => {
+                    const starValue = i + 1;
+                    if (product.rating >= starValue) return '<i class="fas fa-star"></i>';
+                    if (product.rating > starValue - 1 && product.rating < starValue) return '<i class="fas fa-star-half-alt"></i>';
+                    return '<i class="far fa-star"></i>';
+                }).join('');
+
+                return `
+                    <div class="product-card" data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}" data-product-image="${product.image}">
+                        ${badgeHtml}
+                        <div class="product-img">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="product-actions">
+                                <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
+                                <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">${product.category}</p>
+                            <h3 class="product-title">${product.name}</h3>
+                            <div class="product-price">
+                                <span class="current-price">UGX ${product.price.toLocaleString()}</span>
+                                ${oldPriceHtml}
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">${ratingStars}</div>
+                                <span class="rating-count">(${product.reviews})</span>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Attach event listeners to newly added product cards (for quick view, add to cart, wishlist)
+            // The core JS already sets up listeners on DOMContentLoaded, but these cards are added after that.
+            // We need to manually attach listeners or use delegation. Core JS uses event delegation for some? 
+            // It uses direct selectors for add-to-cart, quick-view, etc. So we re-attach here.
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.add-to-cart') || e.target.closest('.quick-view') || e.target.closest('.add-to-wishlist')) return;
+                    if (window.ronvick && window.ronvick.openQuickView) {
+                        window.ronvick.openQuickView(this);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const card = this.closest('.product-card');
+                    if (!card) return;
+                    if (window.ronvick && window.ronvick.addToCart) {
+                        window.ronvick.addToCart({
+                            id: card.dataset.productId,
+                            name: card.dataset.productName,
+                            price: parseFloat(card.dataset.productPrice),
+                            image: card.dataset.productImage,
+                            quantity: 1
+                        });
+                        alert(`${card.dataset.productName} added to cart!`);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.quick-view').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const card = this.closest('.product-card');
+                    if (window.ronvick && window.ronvick.openQuickView) {
+                        window.ronvick.openQuickView(card);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.add-to-wishlist').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (!isLoggedIn()) {
+                        document.getElementById('loginLink')?.click(); // open auth modal
+                        return;
+                    }
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('far');
+                    icon.classList.toggle('fas');
+                    if (icon.classList.contains('fas')) {
+                        this.style.color = '#e74c3c';
+                        alert('Added to wishlist!');
+                    } else {
+                        this.style.color = '';
+                    }
+                });
+            });
+
+            // Helper to check login status (copied from core, but we can use the global)
+            function isLoggedIn() {
+                return !!localStorage.getItem('authToken');
+            }
+        })();
+    </script>
+</body>
+</html>
